@@ -17,16 +17,3 @@ use App\Http\Controllers;
 Route::get('/', function () {
 return view('welcome');
 });
-
-Route::get('/', function(){
-    setcookie("FirstCookie", 0);
-    if (isset($_COOKIE['FirstCookie'])) {
-        setcookie("FirstCookie", ++$_COOKIE["FirstCookie"]);
-        echo "Visitas de la página: " . $_COOKIE['FirstCookie'];
-        }
-    else{
-        echo "Bienvenido a esta página";
-        }
-
-}
-)
