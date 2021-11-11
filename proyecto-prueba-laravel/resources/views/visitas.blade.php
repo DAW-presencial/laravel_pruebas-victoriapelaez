@@ -1,6 +1,8 @@
+
 <?php
 setcookie("FirstCookie", 0);
 ?>
+
 <html>
     <head>
         <title>contador cookies</title>
