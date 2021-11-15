@@ -15,7 +15,7 @@ if (isset($_COOKIE['FirstCookie'])) {
     echo "Visitas: " . $_COOKIE['FirstCookie'];
 }
 else{
-    echo "Bienvenido a esta página" ;
+    echo "Bienvenido a esta página";
 }
 
 ?>

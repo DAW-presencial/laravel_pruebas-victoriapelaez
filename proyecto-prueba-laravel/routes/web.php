@@ -2,17 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContadorController;
+use App\Http\Controllers\AgendaController;
 
-/*
-  |--------------------------------------------------------------------------
-  | Web Routes
-  |--------------------------------------------------------------------------
-  |
-  | Here is where you can register web routes for your application. These
-  | routes are loaded by the RouteServiceProvider within a group which
-  | contains the "web" middleware group. Now create something great!
-  |
- */
 
 Route::get('/', function () {
 return view('welcome');
@@ -21,3 +12,7 @@ Route::get('/visitas', function(){
     return view('visitas');
 });
 Route::get('/visitasController',[ContadorController::class,'devolverVista']);
+/*Route::get('/visitasController',ContadorController::class);*/
+/*Route::get('/visitasController{name}',[ContadorController::class,'devolverVista']);*/
+
+Route::get('/agenda',[AgendaController::class,'devolverAgenda']);

@@ -8,3 +8,6 @@ class ContadorController extends Controller{
         return view('visitas');
     }
 }
+
+/*function __invoke(){
+return view('visitas');}*/
