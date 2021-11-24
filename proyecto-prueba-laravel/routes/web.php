@@ -16,3 +16,7 @@ Route::get('/visitasController',[ContadorController::class,'devolverVista']);
 /*Route::get('/visitasController{name}',[ContadorController::class,'devolverVista']);*/
 
 Route::get('/agenda',[AgendaController::class,'devolverAgenda']);
+
+Route::get('/welcome_viki', function(){
+    return view('welcome_viki');
+});
