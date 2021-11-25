@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContadorController;
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\FormularioValidacionController;
 
 
 Route::get('/', function () {
@@ -20,6 +21,5 @@ Route::get('/agenda',[AgendaController::class,'devolverAgenda']);
 Route::get('/welcome_viki', function(){
     return view('welcome_viki');
 });
-Route::get('/formulario-validacion',function (){
-    return view('formulario-validacion');
-});
+Route::get('/formulario-validacion',[FormularioValidacionController::class,'devolverFormulario']);
+
