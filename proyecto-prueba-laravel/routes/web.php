@@ -21,5 +21,7 @@ Route::get('/agenda',[AgendaController::class,'devolverAgenda']);
 Route::get('/welcome_viki', function(){
     return view('welcome_viki');
 });
-Route::get('/formulario-validacion',[FormularioValidacionController::class,'devolverFormulario']);
+Route::get('/{lang}/formulario-validacion',[FormularioValidacionController::class,'devolverFormulario']);
+Route::post('/formulario-validacion',[FormularioValidacionController::class,'devolverFormulario']);
+
 

@@ -1,29 +1,58 @@
+<?php
+function filtrado($datos)
+{
+    $datos = trim($datos); // Elimina espacios antes y después de los datos
+    $datos = stripslashes($datos); // Elimina backslashes \
+    $datos = htmlspecialchars($datos); // Traduce caracteres especiales en entidades HTML
+    return $datos;
+}
+
+if (isset($_POST["submit"])) {
+    $nombre = filtrado($_POST["nombre"]);
+    $email = filtrado($_POST["email"]);
+    $password = filtrado($_POST["password"]);
+    // Utilizamos implode para pasar el array a string
+    $idiomas = filtrado(implode(", ", $_POST["idiomas"]));
+}
+
+?>
+
+
 <html>
-<h2>Formulario del alumno:</h2>
-<form action="" method="post">
-    Nombre:
+<body>
+<h2>@lang('Formulario del alumno'):</h2>
+<form action="/formulario-validacion" method="post">
+    @method('post')
+    @lang('Nombre'):
     <input type="text" name="nombre"><br>
-    Email:
+    @lang('Email'):
     <input type="text" name="email"><br>
-    Contraseña:
+    @lang('Contraseña'):
     <input type="password" name="password"><br>
-    Educacion:
-    <select name="educacion">
-        <option value="sin-estudios">Sin estudios</option>
-        <option value="educacion-obligatoria" selected="selected">Educación Obligatoria</option>
-        <option value="formacion-profesional">Formación profesional</option>
-        <option value="universidad">Universidad</option>
-    </select> <br>
 
-    Idiomas:
-    <input type="checkbox" name="idiomas[]" value="español" checked="checked">Español</input>
-    <input type="checkbox" name="idiomas[]" value="ingles">Inglés</input>
-    <input type="checkbox" name="idiomas[]" value="frances">Francés</input>
-    <input type="checkbox" name="idiomas[]" value="aleman">Alemán</input><br>
+    @lang('Idiomas'):
+    <input type="checkbox" name="idiomas[]" value="espanol" checked="checked">@lang('Español')</input>
+    <input type="checkbox" name="idiomas[]" value="ingles">@lang('Inglés')</input>
+    <input type="checkbox" name="idiomas[]" value="frances">@lang('Francés')</input>
+    <input type="checkbox" name="idiomas[]" value="aleman">@lang('Alemán')</input><br>
 
-    <input type="submit" name="submit" value="Enviar">
+    <input type="submit" name="submit" value="@lang('Enviar')">
 </form>
+
+
+<?php
+var_dump($_POST);
+/*if(isset($_POST["submit"])): */?><!--
+<h2>Mostrar datos enviados</h2>
+Nombre : <?php /*isset($nombre) ? print $nombre : ""; */?> <br>
+Email : <?php /*isset($email) ? print $email : ""; */?> <br>
+Contraseña : <?php /*isset($password) ? print $password : ""; */?> <br>
+Idiomas : <?php /*isset($idiomas) ? print $idiomas : ""; */?> <br>
+--><?php /*endif; */?>
 </body>
 </html>
+
+
+
 
 

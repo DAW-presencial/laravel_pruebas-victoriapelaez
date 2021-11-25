@@ -1,4 +1,16 @@
 {
+    "Formulario del alumno": "Student form",
+    "Nombre": "Name",
+    "Email":"Email",
+    "Contraseña":"Password",
+    "Educacion":"Education",
+    "Idiomas":"Languages",
+    "Español": "Spanish",
+    "Inglés": "English",
+    "Francés": "French",
+    "Alemán": "Deutsch",
+    "Enviar": "Send",
+
         "hola": "Guay del paraguay",
     "All rights reserved.": "All rights reserved.",
     "Forbidden": "Forbidden",

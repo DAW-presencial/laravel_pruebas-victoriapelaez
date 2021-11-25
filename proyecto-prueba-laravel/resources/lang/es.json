@@ -1,5 +1,17 @@
 {
-        "hola": "Hola, esto marcha",
+    "Formulario del alumno": "Formulario del alumno",
+    "Nombre": "Nombre",
+    "Email":"Email",
+    "Contraseña":"Contraseña",
+    "Educacion":"Educacion",
+    "Idiomas":"Idiomas",
+    "Español": "Español",
+    "Inglés": "Inglés",
+    "Francés": "Francés",
+    "Alemán": "Alemán",
+    "Enviar": "Enviar",
+
+    "hola": "Hola, esto marcha",
     "All rights reserved.": "Todos los derechos reservados.",
     "Forbidden": "Prohibido",
     "Go Home": "Ir a inicio",

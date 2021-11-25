@@ -1,4 +1,16 @@
 {
+    "Formulario del alumno": "Formulari de l'alumne",
+    "Nombre": "Nom",
+    "Email":"Email",
+    "Contraseña":"Contrasenya",
+    "Educacion":"Educacio",
+    "Idiomas":"Idiomes",
+    "Español": "Espanyol",
+    "Inglés": "Anglés",
+    "Francés": "Francès",
+    "Alemán": "Alemany",
+    "Enviar": "Enviar",
+
     "All rights reserved.": "Tots els drets reservats.",
     "Forbidden": "Prohibit",
     "Go Home": "Aneu a l'inici",
