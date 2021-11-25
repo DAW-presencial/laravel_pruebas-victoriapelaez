@@ -20,3 +20,6 @@ Route::get('/agenda',[AgendaController::class,'devolverAgenda']);
 Route::get('/welcome_viki', function(){
     return view('welcome_viki');
 });
+Route::get('/formulario-validacion',function (){
+    return view('formulario-validacion');
+});
