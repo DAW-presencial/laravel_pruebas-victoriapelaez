@@ -8,4 +8,6 @@ class FormularioValidacionController extends Controller{
         }
         return view('formulario-validacion');
     }
+
+
 }
