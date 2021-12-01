@@ -12,7 +12,6 @@
       <path value="$PROJECT_DIR$/proyecto-prueba-laravel/vendor/symfony/css-selector" />
       <path value="$PROJECT_DIR$/proyecto-prueba-laravel/vendor/nette/schema" />
       <path value="$PROJECT_DIR$/proyecto-prueba-laravel/vendor/symfony/polyfill-intl-grapheme" />
-      <path value="$PROJECT_DIR$/proyecto-prueba-laravel/vendor/symfony/http-client-contracts" />
       <path value="$PROJECT_DIR$/proyecto-prueba-laravel/vendor/symfony/polyfill-php72" />
       <path value="$PROJECT_DIR$/proyecto-prueba-laravel/vendor/symfony/polyfill-ctype" />
       <path value="$PROJECT_DIR$/proyecto-prueba-laravel/vendor/ramsey/uuid" />
@@ -119,6 +118,7 @@
       <path value="$PROJECT_DIR$/proyecto-prueba-laravel/vendor/dragon-code/contracts" />
       <path value="$PROJECT_DIR$/proyecto-prueba-laravel/vendor/andrey-helldar/pretty-array" />
       <path value="$PROJECT_DIR$/proyecto-prueba-laravel/vendor/andrey-helldar/support" />
+      <path value="$PROJECT_DIR$/proyecto-prueba-laravel/vendor/laravel/breeze" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3">
