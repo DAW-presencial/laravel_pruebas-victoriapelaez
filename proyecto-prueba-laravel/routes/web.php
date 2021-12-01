@@ -24,4 +24,4 @@ Route::get('/welcome_viki', function(){
 Route::get('/{lang}/formulario-validacion',[FormularioValidacionController::class,'devolverFormulario']);
 Route::post('/formulario-validacion',[FormularioValidacionController::class,'devolverFormulario']);
 
-
+//comentario prueba git
