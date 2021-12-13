@@ -16,7 +16,8 @@ use App\Http\Controllers\FormularioValidacionController;
 |
 */
 
-Route::get('/', function () {
+//poniendo el middelware auth ponemos un capa intermedia donde obligamos al usuario a logearse
+Route::middleware('auth')->get('/', function () {
     return view('welcome');
 });
 
