@@ -14,7 +14,8 @@ class PaisesController extends Controller
      */
     public function index()
     {
-        //
+        $data = Paises::all();
+        return view('paises', compact('data'));
     }
 
     /**
@@ -30,7 +31,7 @@ class PaisesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +42,7 @@ class PaisesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Paises  $paises
+     * @param \App\Models\Paises $paises
      * @return \Illuminate\Http\Response
      */
     public function show(Paises $paises)
@@ -52,7 +53,7 @@ class PaisesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Paises  $paises
+     * @param \App\Models\Paises $paises
      * @return \Illuminate\Http\Response
      */
     public function edit(Paises $paises)
@@ -63,8 +64,8 @@ class PaisesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Paises  $paises
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Paises $paises
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Paises $paises)
@@ -75,7 +76,7 @@ class PaisesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Paises  $paises
+     * @param \App\Models\Paises $paises
      * @return \Illuminate\Http\Response
      */
     public function destroy(Paises $paises)
