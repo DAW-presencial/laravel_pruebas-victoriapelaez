@@ -1,20 +1,66 @@
+<style>
+    body {
+        margin: auto 0;
+        background-color: lightpink;
+        color: lightpink;
+        font-family: "Inconsolata", "Fira Mono", "Source Code Pro", Monaco, Consolas, "Lucida Console", monospace;
+    }
+
+    .paises-container {
+        margin: 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+    }
+
+    .titulo {
+        text-align: center;
+        color: deeppink;
+        font-size: 3rem;
+        font-style: italic;
+        border: purple 4px solid;
+        padding: 10px;
+        background-color: black;
+    }
+
+    .tabla {
+        background-color: black;
+    }
+
+    .cabeceras {
+        font-style: italic;
+        text-align: center;
+        color: deeppink;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .cabecera-hijo {
+        border: purple 4px solid;
+        padding: 10px;
+        text-align: center;
+    }
+
+
+</style>
 <div class="paises-container">
     <h1 class="titulo">@lang('TABLA DE PAISES')</h1>
-            <table class="tabla">
-                <tr class="cabeceras">
-                    <td>@lang('nombre')</td>
-                    <td>@lang('cod_numerico')</td>
-                    <td>@lang('codigoISO3')</td>
-                    <td>@lang('codigoISO2')</td>
-                </tr>
-                @foreach($paises as $pais)
-                    <tr class="datos-paises">
-                        <td>{{$pais->nombre}}</td>
-                        <td>{{$pais->cod_numerico}}</td>
-                        <td>{{$pais->codigoISO3}}</td>
-                        <td>{{$pais->codigoISO2}}</td>
-                    </tr>
-                @endforeach
-            </table>
+    <table class="tabla">
+        <tr class="cabeceras">
+            <td class="cabecera-hijo">@lang('nombre')</td>
+            <td class="cabecera-hijo">@lang('cod_numerico')</td>
+            <td class="cabecera-hijo">@lang('codigoISO3')</td>
+            <td class="cabecera-hijo">@lang('codigoISO2')</td>
+        </tr>
+        @foreach($paises as $pais)
+            <tr class="datos-paises">
+                <td class="cabecera-hijo">{{$pais->nombre}}</td>
+                <td class="cabecera-hijo">{{$pais->cod_numerico}}</td>
+                <td class="cabecera-hijo">{{$pais->codigoISO3}}</td>
+                <td class="cabecera-hijo">{{$pais->codigoISO2}}</td>
+            </tr>
+        @endforeach
+    </table>
 </div>
 
