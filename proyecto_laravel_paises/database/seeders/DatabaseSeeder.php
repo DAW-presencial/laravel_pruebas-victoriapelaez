@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //si quiero llamar mas seeders los pondria entre [PaisesSeeder::class,LanguageSeeder::class]
         $this->call(PaisesSeeder::class);
     }
 }
