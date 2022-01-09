@@ -1,8 +1,8 @@
 <style>
     body {
         margin: auto 0;
-        background-color: lightpink;
-        color: lightpink;
+        background-color: lightgrey;
+        color: black;
         font-family: "Inconsolata", "Fira Mono", "Source Code Pro", Monaco, Consolas, "Lucida Console", monospace;
     }
 
@@ -16,28 +16,26 @@
 
     .titulo {
         text-align: center;
-        color: deeppink;
+        color: darkgreen;
         font-size: 3rem;
         font-style: italic;
-        border: purple 4px solid;
         padding: 10px;
-        background-color: black;
     }
 
     .tabla {
-        background-color: black;
+        background-color: white;
     }
 
     .cabeceras {
         font-style: italic;
         text-align: center;
-        color: deeppink;
+        color: darkblue;
         font-weight: bold;
         text-transform: uppercase;
     }
 
     .cabecera-hijo {
-        border: purple 4px solid;
+        border: black 1px solid;
         padding: 10px;
         text-align: center;
     }
