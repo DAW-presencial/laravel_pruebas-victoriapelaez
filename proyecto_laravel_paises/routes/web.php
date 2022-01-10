@@ -19,3 +19,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/{lang}/tablapaises', [PaisesController::class, 'index']);
+//    ->parameters(['paises'=>'pais'])
