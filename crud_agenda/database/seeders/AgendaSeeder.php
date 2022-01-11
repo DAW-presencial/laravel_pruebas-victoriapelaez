@@ -21,5 +21,11 @@ class AgendaSeeder extends Seeder
             'teléfono'=> Str::random(9),
             'email' => Str::random(10).'@gmail.com',
         ]);
+        DB::table('agenda')->insert([
+            'nombre' => 'Victoria',
+            'apellido' => 'Peláez',
+            'teléfono'=> '000000000',
+            'email' => 'victoria@gmail.com',
+        ]);
     }
 }
