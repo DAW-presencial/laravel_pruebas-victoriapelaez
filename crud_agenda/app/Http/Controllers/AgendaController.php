@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
 
 class AgendaController extends Controller
@@ -23,7 +24,10 @@ class AgendaController extends Controller
      */
     public function create()
     {
-        //
+        if (Gate::allows('create-contacto')) {
+            //return view('comunidades.create');
+            echo "Has pasado la puerta";
+        }
     }
 
     /**
