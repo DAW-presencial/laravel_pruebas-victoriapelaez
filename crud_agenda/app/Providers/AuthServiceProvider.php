@@ -26,8 +26,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('create-contacto', function (User $user) {
+        Gate::define('index-agenda', function (User $user) {
             return ($user->email === 'victoria@gmail.com');
+            //return true;
         });
     }
 }

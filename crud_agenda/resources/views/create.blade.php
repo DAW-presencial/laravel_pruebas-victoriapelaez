@@ -92,8 +92,16 @@
 </head>
 <body>
 <div class="main-container">
-    <h1 class="titulo">AGENDA CONTACTOS</h1>
+    <h1 class="titulo">CREAR CONTACTO</h1>
 
+    <form method="post" class="formulario">
+        <input type="text" name="nombre" placeholder="Nombre" value="" class="input"/>
+        <input type="text" name="apellido" placeholder="Apellido" value="" class="input"/>
+        <input type="text" name="telefono" placeholder="Telefono" value="" class="input"/>
+        <input type="text" name="email" placeholder="Email" value="" class="input"/><br>
+        <input type="submit" value="Añadir Contacto" name="agregar" class="boton"/>
+
+    </form>
 </div>
 </body>
 </html>
