@@ -14,7 +14,8 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        echo "Hola breeze";
+        return view('index');
+
     }
 
     /**
@@ -25,7 +26,7 @@ class AgendaController extends Controller
     public function create()
     {
         if (Gate::allows('create-contacto')) {
-            //return view('comunidades.create');
+            //return view('agenda.create');
             echo "Has pasado la puerta";
         }
     }

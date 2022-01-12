@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AgendaController;
 use Illuminate\Support\Facades\Route;
-
+require __DIR__.'/auth.php';
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,4 +13,5 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('agenda', AgendaController::class)->middleware(['auth']);
-require __DIR__.'/auth.php';
+
+
