@@ -15,13 +15,15 @@ class AgendaSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('agenda')->insert([
+        /*DB::table('agenda')->insert([
+
             'nombre' => Str::random(10),
             'apellido' => Str::random(10),
             'teléfono'=> Str::random(9),
             'email' => Str::random(10).'@gmail.com',
-        ]);
+        ]);*/
         DB::table('agenda')->insert([
+            'id'=>'1',
             'nombre' => 'Victoria',
             'apellido' => 'Peláez',
             'teléfono'=> '000000000',

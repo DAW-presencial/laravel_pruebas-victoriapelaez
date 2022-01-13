@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agenda;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 
 class AgendaController extends Controller
@@ -10,12 +12,19 @@ class AgendaController extends Controller
 
     public function index()
     {
-          /*if (Gate::allows('index-agenda')) {
-              return view('index');
-          }
-          Abort(403);*/
-        abort_unless(Gate::allows('index-agenda'), 403);
-        return view('index');
+        /*if (Gate::allows('index-agenda')) {
+            return view('index');
+        }
+        Abort(403);*/
+        /*  abort_unless(Gate::allows('index-agenda'), 403);
+          return view('index');*/
+
+        $this->authorize('index-agenda');
+        //$datos=DB::table('agenda')->select('nombre','apellido','teléfono','email')->get();
+        $datos = Agenda::all();
+        return view('index', compact('datos'));
+
+
     }
 
     /**
@@ -25,7 +34,7 @@ class AgendaController extends Controller
      */
     public function create()
     {
-
+        return view('create');
     }
 
     /**

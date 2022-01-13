@@ -17,29 +17,15 @@
             flex-direction: column;
             margin-left: auto;
             margin-right: auto;
-            border: rebeccapurple 2px solid;
             border-radius: 2rem;
             width: 80%;
-            background-color: whitesmoke;
-        }
 
-        .titulo {
-            align-self: center;
-            color: rebeccapurple;
-            text-decoration: overline;
         }
-
-        .lista {
-            list-style-type: square;
-            font-style: italic;
-            color: darkblue;
+        .input-container{
+            display: flex;
+            justify-content:center;
         }
-
-        .formulario {
-            align-self: center;
-        }
-
-        .input {
+        input {
             margin: 1rem;
             width: 17rem;
         }
@@ -54,10 +40,17 @@
             width: 12rem;
         }
 
+        .titulo {
+            align-self: center;
+            color: whitesmoke;
+            text-decoration: overline;
+        }
+
         .tabla {
             display: flex;
             justify-content: center;
             margin-top: 1rem;
+            margin-bottom: 2rem;
         }
 
         table {
@@ -65,35 +58,58 @@
             border-collapse: collapse;
             overflow: hidden;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: whitesmoke;
         }
 
         th,
         td {
             padding: 15px;
             background-color: rgba(255, 255, 255, 0.2);
-            color: #fff;
-        }
-
-        th {
-            color: rebeccapurple;
-        }
-
-
-        th {
-            background-color: #55608f;
-        }
-
-
-
-        td {
+            color:rebeccapurple;
             text-align: center;
         }
+        tbody{
+        }
+        thead {
+            background-color: #55608f;
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
 <div class="main-container">
     <h1 class="titulo">AGENDA CONTACTOS</h1>
-
+    <div class='tabla'>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($datos as $dato)
+                <tr>
+                    <td>{{$dato->id}}</td>
+                    <td>{{$dato->nombre}}</td>
+                    <td>{{$dato->apellido}}</td>
+                    <td>{{$dato->teléfono}}</td>
+                    <td>{{$dato->email}}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
+<div class="input-container">
+    <input type="submit" value="Crear Contacto" name="agregar" class="boton"/>
+    <input type="submit" value="Editar Contacto" name="editar" class="boton"/>
+    <input type="submit" value="Eliminar Contacto" name="eliminar" class="boton"/>
+</div>
+
 </body>
 </html>

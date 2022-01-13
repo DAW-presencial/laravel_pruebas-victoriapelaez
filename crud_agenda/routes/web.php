@@ -15,3 +15,4 @@ Route::get('/dashboard', function () {
 Route::resource('agenda', AgendaController::class)->middleware(['auth']);
 
 
+
