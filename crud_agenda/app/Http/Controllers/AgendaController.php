@@ -22,7 +22,7 @@ class AgendaController extends Controller
         $this->authorize('index-agenda');
         //$datos=DB::table('agenda')->select('nombre','apellido','teléfono','email')->get();
         $datos = Agenda::all();
-        return view('index', compact('datos'));
+        return view('agenda.index', compact('datos'));
 
 
     }
@@ -34,7 +34,7 @@ class AgendaController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('agenda.create');
     }
 
     /**
