@@ -83,12 +83,22 @@
 
 </div>
 <div class="input-container">
-    <form method="post" class="formulario">
-        <input type="text" name="nombre" placeholder="Nombre" value="" class="input"/>
-        <input type="text" name="apellido" placeholder="Apellido" value="" class="input"/>
-        <input type="text" name="telefono" placeholder="Teléfono" value="" class="input"/>
-        <input type="text" name="email" placeholder="Email" value="" class="input"/><br>
-        <input type="submit" value="Añadir Contacto" name="agregar" class="boton"/>
+    <form action="{{url('/agenda')}}" method="post" class="formulario" enctype="multipart/form-data">
+        @csrf
+{{--@include('agenda.form')--}}
+
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" value="" id="nombre" placeholder="Nombre" class="input"/><br>
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" value="" id="apellido" placeholder="Apellido" class="input"/><br>
+        <label for="telefono">Telefono</label>
+        <input type="text" name="telefono" value="" id="telefono" placeholder="Teléfono" class="input"/><br>
+        <label for="email">Email</label>
+        <input type="text" name="email" value="" id="email" placeholder="Email" class="input"/><br>
+        <label for="foto">Foto</label>
+        <input type="file" name="foto" value="" id="foto" class="input"/><br>
+        <input type="submit" value="Guardar Datos" class="boton"/>
+
     </form>
 </div>
 

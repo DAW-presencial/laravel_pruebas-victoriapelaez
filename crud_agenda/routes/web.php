@@ -13,6 +13,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('agenda', AgendaController::class)->middleware(['auth']);
+//Route::middleware(['auth'])->resource('agenda', AgendaController::class);
+
 
 
 

@@ -14,11 +14,14 @@ class Agenda extends Migration
     public function up()
     {
         Schema::create('agenda', function (Blueprint $table){
-            $table->string('id',10)->primary();
+            $table->id();
             $table->string('nombre',50);
             $table->string('apellido',50);
-            $table->char('teléfono',9)->unique();
+            $table->char('telefono',9)->unique();
             $table->string('email',50);
+            $table->string('foto')->default('public/user.jpg');
+
+            $table->timestamps();//es necesario ponerlo para la actualizacion
         });
     }
 

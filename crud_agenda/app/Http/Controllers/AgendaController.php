@@ -21,9 +21,9 @@ class AgendaController extends Controller
 
         $this->authorize('index-agenda');
         //$datos=DB::table('agenda')->select('nombre','apellido','teléfono','email')->get();
+        //$datos['agenda']=Agenda::paginate(5);
         $datos = Agenda::all();
         return view('agenda.index', compact('datos'));
-
 
     }
 
@@ -45,7 +45,14 @@ class AgendaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //$datosagenda = request()->all();
+        $datosagenda = request()->except('_token');
+        if($request->hasFile('foto')){
+            $datosagenda['foto']=$request->file('foto')->store('uploads','public');
+        }
+        Agenda::insert($datosagenda);
+        //return response()->json($datosagenda);
+        return redirect('agenda');
     }
 
     /**
@@ -67,7 +74,8 @@ class AgendaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contacto=Agenda::findOrFail($id);
+        return view('agenda.edit', compact('contacto'));
     }
 
     /**
@@ -79,7 +87,12 @@ class AgendaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $datosagenda = request()->except(['_token','_method']);
+        Agenda::where('id','=',$id)->update($datosagenda);
+
+        $contacto=Agenda::findOrFail($id);
+        //return view('agenda.edit', compact('contacto'));
+        return redirect('agenda');
     }
 
     /**
@@ -90,6 +103,7 @@ class AgendaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Agenda::destroy($id);
+        return redirect('agenda');
     }
 }

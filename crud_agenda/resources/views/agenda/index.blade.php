@@ -21,10 +21,12 @@
             width: 80%;
 
         }
-        .input-container{
+
+        .input-container {
             display: flex;
-            justify-content:center;
+            justify-content: center;
         }
+
         input {
             margin: 1rem;
             width: 17rem;
@@ -65,11 +67,13 @@
         td {
             padding: 15px;
             background-color: rgba(255, 255, 255, 0.2);
-            color:rebeccapurple;
+            color: rebeccapurple;
             text-align: center;
         }
-        tbody{
+
+        tbody {
         }
+
         thead {
             background-color: #55608f;
             text-align: center;
@@ -89,6 +93,9 @@
                 <th>Apellido</th>
                 <th>Teléfono</th>
                 <th>Email</th>
+                <th>Foto</th>
+                <th>Acciones</th>
+
             </tr>
             </thead>
             <tbody>
@@ -97,8 +104,22 @@
                     <td>{{$dato->id}}</td>
                     <td>{{$dato->nombre}}</td>
                     <td>{{$dato->apellido}}</td>
-                    <td>{{$dato->teléfono}}</td>
+                    <td>{{$dato->telefono}}</td>
                     <td>{{$dato->email}}</td>
+                    <td>
+                        <img src="{{asset('storage'.'/'.$dato->foto)}}" alt="Imagen Contacto">
+                    </td>
+                    <td>
+                        <a href="{{url('/agenda/'.$dato->id.'/edit')}}">
+                            Editar
+                        </a>
+                        |
+                        <form action="{{url('/agenda/'.$dato->id)}}" method="post">
+                            @csrf
+                            {{method_field('DELETE')}}
+                            <input type="submit" onclick="return confirm('¿Deseas borrar el contacto?')" value="Borrar">
+                        </form>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
@@ -106,9 +127,12 @@
     </div>
 </div>
 <div class="input-container">
-    <input type="submit" value="Crear Contacto" name="agregar" class="boton"/>
-    <input type="submit" value="Editar Contacto" name="editar" class="boton"/>
-    <input type="submit" value="Eliminar Contacto" name="eliminar" class="boton"/>
+    <a href="{{url('/agenda/create')}}">
+        <input type="submit" value="Crear Contacto" name="agregar" class="boton"/>
+    </a>
+
+    {{--<input type="submit" value="Editar Contacto" name="editar" class="boton"/>
+    <input type="submit" value="Eliminar Contacto" name="eliminar" class="boton"/>--}}
 </div>
 
 </body>
