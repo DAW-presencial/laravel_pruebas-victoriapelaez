@@ -14,6 +14,7 @@ class AgendaRequest extends FormRequest
     public function authorize()
     {
         return false;
+        //aqui es para controlar el acceso, pero lo suyo es hacer las gates en un proveeddor de servicio
     }
 
     /**
@@ -24,7 +25,8 @@ class AgendaRequest extends FormRequest
     public function rules()
     {
         return [
-            //'foto'=>'nullable'
+            /*'telefono' =>'unique'|'integer'|'9',
+            'email'=>'email',*/
         ];
     }
 }

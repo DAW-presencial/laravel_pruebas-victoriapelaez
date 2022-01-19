@@ -5,6 +5,12 @@
     <title>agendaDB</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         body {
             background: linear-gradient(45deg, #49a09d, #5f2c82);
@@ -45,6 +51,8 @@
             align-self: center;
             color: whitesmoke;
             text-decoration: overline;
+            font-size: 2rem;
+            margin-top: 2rem;
         }
 
         .tabla {
@@ -76,8 +84,12 @@
         }
 
     </style>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://cdn.tailwindcss.com/%22%3E"></script>
 </head>
 <body>
+@include('layouts.navigation')
 <div class="main-container">
     <h1 class="titulo">CREAR CONTACTO</h1>
 

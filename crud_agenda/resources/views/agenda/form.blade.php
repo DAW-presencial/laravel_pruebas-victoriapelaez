@@ -85,6 +85,6 @@
 <label for="email">Email</label>
 <input type="text" name="email" value="{{$contacto->email}}" id="email" placeholder="Email" class="input"/><br>
 <label for="foto">Foto</label>
-<img src="{{asset('storage'.'/'.$contacto->foto)}}" alt="Imagen Contacto">
+<img src="{{asset('storage'.'/'.$contacto->foto)}}" alt="Imagen Contacto" width="70">
 <input type="file" name="foto" value="" id="foto" class="input"/><br>
 <input type="submit" value="Guardar Datos" class="boton"/>

@@ -6,6 +6,7 @@ use App\Models\Agenda;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 class AgendaController extends Controller
 {
@@ -88,6 +89,12 @@ class AgendaController extends Controller
     public function update(Request $request, $id)
     {
         $datosagenda = request()->except(['_token','_method']);
+
+        if($request->hasFile('foto')){
+            $contacto=Agenda::findOrFail($id);
+            Storage::delete('public/'.$contacto->foto);
+            $datosagenda['foto']=$request->file('foto')->store('uploads','public');
+        }
         Agenda::where('id','=',$id)->update($datosagenda);
 
         $contacto=Agenda::findOrFail($id);

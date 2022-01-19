@@ -27,8 +27,12 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('index-agenda', function (User $user) {
-            return ($user->email === 'victoria@gmail.com');
+            return true;
+            //return ($user->email === 'victoria@gmail.com');
             //return true;//return false; //false es para que me salga el error
         });
+        Gate::define('create-agenda', function (User $user){
+        return ($user->email === 'victoria@gmail.com');
+    });
     }
 }
