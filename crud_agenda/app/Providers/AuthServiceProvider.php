@@ -32,7 +32,8 @@ class AuthServiceProvider extends ServiceProvider
             //return true;//return false; //false es para que me salga el error
         });
         Gate::define('create-agenda', function (User $user){
-        return ($user->email === 'victoria@gmail.com');
+        return ($user->role === 'super');
+
     });
     }
 }

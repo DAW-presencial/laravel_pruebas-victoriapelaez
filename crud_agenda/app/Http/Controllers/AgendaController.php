@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Agenda;
+use App\Models\Contacto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
@@ -22,8 +22,8 @@ class AgendaController extends Controller
 
         $this->authorize('index-agenda');
         //$datos=DB::table('agenda')->select('nombre','apellido','teléfono','email')->get();
-        //$datos['agenda']=Agenda::paginate(5);
-        $datos = Agenda::all();
+        //$datos['agenda']=Contacto::paginate(5);
+        $datos = Contacto::all();
         return view('agenda.index', compact('datos'));
 
     }
@@ -51,7 +51,7 @@ class AgendaController extends Controller
         if($request->hasFile('foto')){
             $datosagenda['foto']=$request->file('foto')->store('uploads','public');
         }
-        Agenda::insert($datosagenda);
+        Contacto::insert($datosagenda);
         //return response()->json($datosagenda);
         return redirect('agenda');
     }
@@ -75,7 +75,7 @@ class AgendaController extends Controller
      */
     public function edit($id)
     {
-        $contacto=Agenda::findOrFail($id);
+        $contacto=Contacto::findOrFail($id);
         return view('agenda.edit', compact('contacto'));
     }
 
@@ -91,13 +91,13 @@ class AgendaController extends Controller
         $datosagenda = request()->except(['_token','_method']);
 
         if($request->hasFile('foto')){
-            $contacto=Agenda::findOrFail($id);
+            $contacto=Contacto::findOrFail($id);
             Storage::delete('public/'.$contacto->foto);
             $datosagenda['foto']=$request->file('foto')->store('uploads','public');
         }
-        Agenda::where('id','=',$id)->update($datosagenda);
+        Contacto::where('id','=',$id)->update($datosagenda);
 
-        $contacto=Agenda::findOrFail($id);
+        $contacto=Contacto::findOrFail($id);
         //return view('agenda.edit', compact('contacto'));
         return redirect('agenda');
     }
@@ -110,7 +110,7 @@ class AgendaController extends Controller
      */
     public function destroy($id)
     {
-        Agenda::destroy($id);
+        Contacto::destroy($id);
         return redirect('agenda');
     }
 }

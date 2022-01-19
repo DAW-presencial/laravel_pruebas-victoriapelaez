@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Agenda extends Model
+class Contacto extends Model
 {
     use HasFactory;
 
-    protected $table = 'agenda';
+    protected $table = 'contacto';
 
     //protected $fillable = ['','',''];
     //fillable es:

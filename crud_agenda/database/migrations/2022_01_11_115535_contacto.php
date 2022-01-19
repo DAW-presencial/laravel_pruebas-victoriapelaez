@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Agenda extends Migration
+class Contacto extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class Agenda extends Migration
      */
     public function up()
     {
-        Schema::create('agenda', function (Blueprint $table){
+        Schema::create('contacto', function (Blueprint $table){
             $table->id();
             $table->string('nombre',50);
             $table->string('apellido',50);
@@ -32,6 +32,6 @@ class Agenda extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('agenda');
+        Schema::dropIfExists('contacto');
     }
 }
