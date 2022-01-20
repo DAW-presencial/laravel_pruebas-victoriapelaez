@@ -28,19 +28,19 @@ class ContactoSeeder extends Seeder
                 'apellido' => 'Peláez',
                 'telefono' => '000000000',
                 'email' => 'victoria@gmail.com',
-                'foto' => 'user.jpg'
+                'foto' => 'uploads/user.png'
             ], [
                 'nombre' => 'Patricia',
                 'apellido' => 'Peláez',
                 'telefono' => '111111111',
                 'email' => 'patricia@gmail.com',
-                'foto' => 'user.jpg'
+                'foto' => 'uploads/user.png'
             ], [
                 'nombre' => 'Ramón',
                 'apellido' => 'Peláez',
                 'telefono' => '222222222',
                 'email' => 'ramon@gmail.com',
-                'foto' => 'user.jpg'
+                'foto' => 'uploads/user.png'
             ],
         ];
         DB::table('contacto')->insert($contactos);
