@@ -25,16 +25,25 @@
             margin-right: auto;
             border-radius: 2rem;
             width: 80%;
+            margin-bottom: 2rem;
 
         }
 
         .input-container {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+
+        }
+
+        .mensaje {
+            color: red;
+            background-color: white;
+            border: red 1px solid;
+            padding: 1rem;
+            margin: 2rem;
         }
 
         input {
-            margin: 1rem;
             width: 17rem;
         }
 
@@ -88,6 +97,9 @@
 
         form {
             color: black;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
         }
     </style>
     <!-- Scripts -->
@@ -101,10 +113,20 @@
 
 </div>
 <div class="input-container">
-    <form action="{{url('/agenda')}}" method="post" class="formulario" enctype="multipart/form-data">
+
+    @if(count($errors)>0)
+        <div class="mensaje">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li> {{$error}} </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{ url('/agenda') }}" method="post" class="formulario" enctype="multipart/form-data">
         @csrf
         {{--@include('agenda.form')--}}
-
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" value="" id="nombre" placeholder="Nombre" class="input"/><br>
         <label for="apellido">Apellido</label>

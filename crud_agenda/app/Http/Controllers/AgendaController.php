@@ -46,6 +46,20 @@ class AgendaController extends Controller
      */
     public function store(Request $request)
     {
+        $campos = [
+            'nombre' => 'required|string',
+            'apellido' => 'required|string',
+            'telefono' => 'required|char|max9',
+            'email' => 'required|email',
+            'foto' => 'required|max:10000|mimes:jpeg,png,jpg'
+        ];
+        $mensaje = [
+            'required' => 'El :attribute es requerido',
+            'foto.required' => 'La foto es requerida'
+        ];
+
+        $this->validate($request,$campos,$mensaje);
+
         //$datosagenda = request()->all();
         $datosagenda = request()->except('_token');
         if ($request->hasFile('foto')) {
