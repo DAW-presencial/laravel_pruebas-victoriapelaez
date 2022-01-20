@@ -18,8 +18,8 @@ class Contacto extends Migration
             $table->string('nombre',50);
             $table->string('apellido',50);
             $table->char('telefono',9)->unique();
-            $table->string('email',50);
-            $table->string('foto')->default('public/user.jpg');
+            $table->string('email',50)->unique();
+            $table->string('foto')->default('uploads/user.png');
 
             $table->timestamps();//es necesario ponerlo para la actualizacion
         });

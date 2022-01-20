@@ -53,7 +53,7 @@ class AgendaController extends Controller
         }
         Contacto::insert($datosagenda);
         //return response()->json($datosagenda);
-        return redirect('agenda');
+        return redirect('agenda')->with('mensaje', 'Contacto agregado');
     }
 
     /**
@@ -99,7 +99,7 @@ class AgendaController extends Controller
 
         $contacto = Contacto::findOrFail($id);
         //return view('agenda.edit', compact('contacto'));
-        return redirect('agenda');
+        return redirect('agenda')->with('mensaje', 'Contacto actualizado');
     }
 
     /**
@@ -115,6 +115,6 @@ class AgendaController extends Controller
             Contacto::destroy($id);
         }
 
-        return redirect('agenda');
+        return redirect('agenda')->with('mensaje', 'Contacto borrado');
     }
 }

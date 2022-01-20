@@ -132,7 +132,13 @@
     </style>
 </head>
 <body>
+
 @include('layouts.navigation')
+<div>
+    @if(Session::has('mensaje'))
+        {{ Session::get('mensaje') }}
+    @endif
+</div>
 <div class="main-container">
     <h1 class="titulo">AGENDA CONTACTOS</h1>
     <div class='tabla'>
