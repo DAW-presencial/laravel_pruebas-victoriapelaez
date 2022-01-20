@@ -16,7 +16,7 @@
                         {{ __('Inicio') }}
                     </x-nav-link>
                     <x-nav-link :href="route('agenda.index')" :active="request()->routeIs('dashboard')">
-                        {{ __('Contacto') }}
+                        {{ __('Agenda') }}
                     </x-nav-link>
                 </div>
             </div>

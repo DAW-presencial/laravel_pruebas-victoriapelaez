@@ -1,4 +1,3 @@
-
 <!--Formulario-->
 <html>
 <head>
@@ -28,10 +27,12 @@
             width: 80%;
 
         }
-        .input-container{
+
+        .input-container {
             display: flex;
-            justify-content:center;
+            justify-content: center;
         }
+
         input {
             margin: 1rem;
             width: 17rem;
@@ -74,15 +75,20 @@
         td {
             padding: 15px;
             background-color: rgba(255, 255, 255, 0.2);
-            color:rebeccapurple;
+            color: rebeccapurple;
         }
-        tbody{
+
+        tbody {
         }
+
         thead {
             background-color: #55608f;
             text-align: center;
         }
 
+        form {
+            color: black;
+        }
     </style>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -97,7 +103,7 @@
 <div class="input-container">
     <form action="{{url('/agenda')}}" method="post" class="formulario" enctype="multipart/form-data">
         @csrf
-{{--@include('agenda.form')--}}
+        {{--@include('agenda.form')--}}
 
         <label for="nombre">Nombre</label>
         <input type="text" name="nombre" value="" id="nombre" placeholder="Nombre" class="input"/><br>

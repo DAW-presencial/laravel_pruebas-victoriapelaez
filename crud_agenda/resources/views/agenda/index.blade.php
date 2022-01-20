@@ -158,14 +158,14 @@
                     <td>{{$dato->telefono}}</td>
                     <td>{{$dato->email}}</td>
                     <td>
-                        <img src="{{asset('storage/'.$dato->foto)}}" alt="Imagen Contacto">
+                        <img src="{{ asset('storage/'.$dato->foto) }}" alt="Imagen Contacto">
                     </td>
                     <td>
                         <div class="acciones">
-                            <a href="{{url('/agenda/'.$dato->id.'/edit')}}" class="enlace">
+                            <a href="{{ url('/agenda/'.$dato->id.'/edit') }}" class="enlace">
                                 Editar
                             </a>
-                            <form action="{{url('/agenda/'.$dato->id)}}" method="post">
+                            <form action="{{ url('/agenda/'.$dato->id) }}" method="post">
                                 @csrf
                                 {{method_field('DELETE')}}
                                 <input type="submit" onclick="return confirm('¿Deseas borrar el contacto?')"
@@ -182,7 +182,7 @@
 </div>
 <div class="input-container">
     @can('create-agenda')
-        <a href="{{url('/agenda/create')}}">
+        <a href="{{ url('/agenda/create') }}">
             <input type="submit" value="Crear Contacto" name="agregar" class="botonG"/>
         </a>
     @endcan

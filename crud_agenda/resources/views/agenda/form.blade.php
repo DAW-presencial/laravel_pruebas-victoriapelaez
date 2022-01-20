@@ -20,10 +20,12 @@
             width: 80%;
 
         }
-        .input-container{
+
+        .input-container {
             display: flex;
-            justify-content:center;
+            justify-content: center;
         }
+
         input {
             margin: 1rem;
             width: 17rem;
@@ -64,10 +66,12 @@
         td {
             padding: 15px;
             background-color: rgba(255, 255, 255, 0.2);
-            color:rebeccapurple;
+            color: rebeccapurple;
         }
-        tbody{
+
+        tbody {
         }
+
         thead {
             background-color: #55608f;
             text-align: center;
@@ -79,12 +83,14 @@
 <label for="nombre">Nombre</label>
 <input type="text" name="nombre" value="{{$contacto->nombre}}" id="nombre" placeholder="Nombre" class="input"/><br>
 <label for="apellido">Apellido</label>
-<input type="text" name="apellido" value="{{$contacto->apellido}}" id="apellido" placeholder="Apellido" class="input"/><br>
+<input type="text" name="apellido" value="{{$contacto->apellido}}" id="apellido" placeholder="Apellido"
+       class="input"/><br>
 <label for="telefono">Telefono</label>
-<input type="text" name="telefono" value="{{$contacto->telefono}}" id="telefono" placeholder="Teléfono" class="input"/><br>
+<input type="text" name="telefono" value="{{$contacto->telefono}}" id="telefono" placeholder="Teléfono"
+       class="input"/><br>
 <label for="email">Email</label>
 <input type="text" name="email" value="{{$contacto->email}}" id="email" placeholder="Email" class="input"/><br>
 <label for="foto">Foto</label>
-<img src="{{asset('storage'.'/'.$contacto->foto)}}" alt="Imagen Contacto" width="70">
+<img src="{{ asset('storage'.'/'.$contacto->foto) }}" alt="Imagen Contacto" width="70">
 <input type="file" name="foto" value="" id="foto" class="input"/><br>
 <input type="submit" value="Guardar Datos" class="boton"/>
