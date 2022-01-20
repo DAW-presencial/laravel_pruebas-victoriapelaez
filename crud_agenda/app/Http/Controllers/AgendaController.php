@@ -48,8 +48,8 @@ class AgendaController extends Controller
     {
         //$datosagenda = request()->all();
         $datosagenda = request()->except('_token');
-        if($request->hasFile('foto')){
-            $datosagenda['foto']=$request->file('foto')->store('uploads','public');
+        if ($request->hasFile('foto')) {
+            $datosagenda['foto'] = $request->file('foto')->store('uploads', 'public');
         }
         Contacto::insert($datosagenda);
         //return response()->json($datosagenda);
@@ -75,7 +75,7 @@ class AgendaController extends Controller
      */
     public function edit($id)
     {
-        $contacto=Contacto::findOrFail($id);
+        $contacto = Contacto::findOrFail($id);
         return view('agenda.edit', compact('contacto'));
     }
 
@@ -88,16 +88,16 @@ class AgendaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $datosagenda = request()->except(['_token','_method']);
+        $datosagenda = request()->except(['_token', '_method']);
 
-        if($request->hasFile('foto')){
-            $contacto=Contacto::findOrFail($id);
-            Storage::delete('public/'.$contacto->foto);
-            $datosagenda['foto']=$request->file('foto')->store('uploads','public');
+        if ($request->hasFile('foto')) {
+            $contacto = Contacto::findOrFail($id);
+            Storage::delete('public/' . $contacto->foto);
+            $datosagenda['foto'] = $request->file('foto')->store('uploads', 'public');
         }
-        Contacto::where('id','=',$id)->update($datosagenda);
+        Contacto::where('id', '=', $id)->update($datosagenda);
 
-        $contacto=Contacto::findOrFail($id);
+        $contacto = Contacto::findOrFail($id);
         //return view('agenda.edit', compact('contacto'));
         return redirect('agenda');
     }
@@ -110,7 +110,11 @@ class AgendaController extends Controller
      */
     public function destroy($id)
     {
-        Contacto::destroy($id);
+        $contacto = Contacto::findOrFail($id);
+        if (Storage::delete('public/' . $contacto->foto)) {
+            Contacto::destroy($id);
+        }
+
         return redirect('agenda');
     }
 }
