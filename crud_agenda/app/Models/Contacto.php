@@ -11,12 +11,23 @@ class Contacto extends Model
 
     protected $table = 'contacto';
 
+    protected $fillable = [
+        'nombre',
+        'apellido',
+        'teléfono',
+        'email',
+    ];
+
     //protected $fillable = ['','',''];
     //fillable es:
     //listado de campos a rellenar en la tabla en asignacion masiva
     //si en la request recibe + campos no los tendrá en cuenta
     // esto es necesario, porqué en la request está el token y este dato no se inserta en la db
     // lo que provoca un error
+    public static function paginate()
+    {
+
+    }
 
     /**
      * En caso de que tengamos un formulario con muchos campos,

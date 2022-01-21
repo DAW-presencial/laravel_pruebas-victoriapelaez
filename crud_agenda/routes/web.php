@@ -12,7 +12,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('/agenda', AgendaController::class)->middleware(['auth'])->except(['show']);;
+Route::resource('/agenda', AgendaController::class)->middleware(['auth'])->except(['show'])->parameters(['agenda' => 'contacto']);
 //Route::middleware(['auth'])->resource('agenda', AgendaController::class);
 
 
