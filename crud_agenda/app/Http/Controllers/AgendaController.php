@@ -95,8 +95,9 @@ class AgendaController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, User $user)
     {
+        $this->authorize('update',$user);
         $contacto = Contacto::findOrFail($id);
         return view('agenda.edit', compact('contacto'));
     }
@@ -108,7 +109,7 @@ class AgendaController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, User $user)
     {
         $campos = [
             'nombre' => 'required|string',
@@ -126,6 +127,7 @@ class AgendaController extends Controller
             $mensaje = ['foto.required' => 'La foto es requerida',];
         }
 
+        $this->authorize('update',$user);
         $this->validate($request, $campos, $mensaje);
 
         $datosagenda = request()->except(['_token', '_method']);
@@ -148,8 +150,9 @@ class AgendaController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, User $user)
     {
+        $this->authorize('delete',$user);
         $contacto = Contacto::findOrFail($id);
         if (Storage::delete('public/' . $contacto->foto)) {
             Contacto::destroy($id);

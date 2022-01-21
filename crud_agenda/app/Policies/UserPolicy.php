@@ -8,6 +8,11 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class UserPolicy
 {
     use HandlesAuthorization;
+    public function before($user,$ability){
+        if($user->role === 'super'){
+            return true;
+        }
+    }
 
     /**
      * Determine whether the user can view any models.
@@ -41,7 +46,7 @@ class UserPolicy
     public function create(User $user)
     {
         //usuario puede crear
-        return ($user->role === 'super');
+        return ($user->role === 'admin');
     }
 
     /**
@@ -54,7 +59,7 @@ class UserPolicy
     public function update(User $user)
     {
         //usuario puede actualizar
-        return ($user->role === 'super')|| $user->id === $user->user_id;//comprueba si el usuario fue el que creo
+        return ($user->role === 'admin'||'propietario')/*|| $user->id === $user->user_id*/;//comprueba si el usuario fue el que creo
     }
 
     /**
@@ -67,7 +72,7 @@ class UserPolicy
     public function delete(User $user)
     {
         //usuario puede borrar
-        return ($user->role === 'super');
+        return ($user->role === 'admin');
     }
 
     /**
