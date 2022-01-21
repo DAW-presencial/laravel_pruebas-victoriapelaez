@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AgendaRequest;
 use App\Models\Contacto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -45,26 +46,26 @@ class AgendaController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AgendaRequest $request)
     {
-        $campos = [
+        /*$campos = [
             'nombre' => 'required|string',
             'apellido' => 'required|string',
             'telefono' => 'required|unique:contacto',
             'email' => 'required|email|unique:contacto',
             'foto' => 'required|max:10000|mimes:jpeg,png,jpg'
-        ];
-        $mensaje = [
+        ];*/
+        /*$mensaje = [
             'required' => 'El :attribute es requerido',
             'foto.required' => 'La foto es requerida',
             'email' => 'El email debe tener un formato xxxx@dominio.xxx',
             'unique'=>'Este :attribute ya existe'
-        ];
+        ];*/
 
-        $this->validate($request, $campos, $mensaje);
+        $this->validate($request);
 
         //$datosagenda = request()->all();
-        $datosagenda = request()->except('_token');
+        $datosagenda = $request->except('_token');
         if ($request->hasFile('foto')) {
             $datosagenda['foto'] = $request->file('foto')->store('uploads', 'public');
         }
@@ -103,7 +104,7 @@ class AgendaController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request ,$id)
     {
         $campos = [
             'nombre' => 'required|string',
@@ -121,7 +122,7 @@ class AgendaController extends Controller
             $mensaje = ['foto.required' => 'La foto es requerida',];
         }
 
-        $this->validate($request, $campos, $mensaje);
+        $this->validate($request, $campos,$mensaje);
 
         $datosagenda = request()->except(['_token', '_method']);
 

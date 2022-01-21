@@ -13,7 +13,7 @@ class AgendaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
         //aqui es para controlar el acceso, pero lo suyo es hacer las gates en un proveeddor de servicio
     }
 
@@ -25,8 +25,21 @@ class AgendaRequest extends FormRequest
     public function rules()
     {
         return [
-            /*'telefono' =>'unique'|'integer'|'9',
-            'email'=>'email',*/
+            'nombre' => 'required|string',
+            'apellido' => 'required|string',
+            'telefono' => 'required|unique:contacto',
+            'email' => 'required|email|unique:contacto',
+            'foto' => 'required|max:10000|mimes:jpeg,png,jpg'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => 'El :attribute es requerido',
+            'foto.required' => 'La foto es requerida',
+            'email' => 'El email debe tener un formato xxxx@dominio.xxx',
+            'unique' => 'Este :attribute ya existe'
         ];
     }
 }
