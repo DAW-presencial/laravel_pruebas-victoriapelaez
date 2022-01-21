@@ -13,6 +13,14 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdn.tailwindcss.com/%22%3E"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            setTimeout(function() {
+                $(".msg-contacto").fadeOut(1500);
+            },3000);
+        });
+    </script>
     <style>
         body {
             background: linear-gradient(45deg, #49a09d, #5f2c82);
