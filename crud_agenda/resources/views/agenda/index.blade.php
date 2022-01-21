@@ -15,10 +15,10 @@
     <script src="https://cdn.tailwindcss.com/%22%3E"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
-            setTimeout(function() {
+        $(document).ready(function () {
+            setTimeout(function () {
                 $(".msg-contacto").fadeOut(1500);
-            },3000);
+            }, 3000);
         });
     </script>
     <style>
@@ -182,18 +182,24 @@
                         <img src="{{ asset('storage/'.$dato->foto) }}" alt="Imagen Contacto">
                     </td>
                     <td>
+
                         <div class="acciones">
-                            <a href="{{ url('/agenda/'.$dato->id.'/edit') }}" class="enlace">
-                                Editar
-                            </a>
-                            <form action="{{ url('/agenda/'.$dato->id) }}" method="post">
-                                @csrf
-                                {{method_field('DELETE')}}
-                                <input type="submit" onclick="return confirm('¿Deseas borrar el contacto?')"
-                                       value="Borrar"
-                                       class="boton">
-                            </form>
+                            @can('update-agenda')
+                                <a href="{{ url('/agenda/'.$dato->id.'/edit') }}" class="enlace">
+                                    Editar
+                                </a>
+                            @endcan
+                            @can('delete-agenda')
+                                <form action="{{ url('/agenda/'.$dato->id) }}" method="post">
+                                    @csrf
+                                    {{ method_field('DELETE') }}
+                                    <input type="submit" onclick="return confirm('¿Deseas borrar el contacto?')"
+                                           value="Borrar"
+                                           class="boton">
+                                </form>
+                            @endcan
                         </div>
+
                     </td>
                 </tr>
             @endforeach

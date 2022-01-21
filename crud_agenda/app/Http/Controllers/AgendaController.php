@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AgendaRequest;
 use App\Models\Contacto;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
@@ -37,6 +38,7 @@ class AgendaController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', $user = new User());//si no lo dejo puedo acceder con la url //create
         return view('agenda.create');
     }
 
@@ -59,10 +61,12 @@ class AgendaController extends Controller
             'required' => 'El :attribute es requerido',
             'foto.required' => 'La foto es requerida',
             'email' => 'El email debe tener un formato xxxx@dominio.xxx',
-            'unique'=>'Este :attribute ya existe'
+            'unique' => 'Este :attribute ya existe'
         ];
 
-        $this->validate($request,$campos, $mensaje);
+
+        $this->authorize('create',new User());
+        $this->validate($request, $campos, $mensaje);
 
         //$datosagenda = request()->all();
         $datosagenda = $request->except('_token');
@@ -104,7 +108,7 @@ class AgendaController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request ,$id)
+    public function update(Request $request, $id)
     {
         $campos = [
             'nombre' => 'required|string',
@@ -122,7 +126,7 @@ class AgendaController extends Controller
             $mensaje = ['foto.required' => 'La foto es requerida',];
         }
 
-        $this->validate($request, $campos,$mensaje);
+        $this->validate($request, $campos, $mensaje);
 
         $datosagenda = request()->except(['_token', '_method']);
 
