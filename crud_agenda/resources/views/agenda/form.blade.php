@@ -18,16 +18,25 @@
             margin-right: auto;
             border-radius: 2rem;
             width: 80%;
+            margin-bottom: 2rem;
 
         }
 
         .input-container {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+
+        }
+
+        .mensaje {
+            color: red;
+            background-color: white;
+            border: red 1px solid;
+            padding: 1rem;
+            margin: 2rem;
         }
 
         input {
-            margin: 1rem;
             width: 17rem;
         }
 
@@ -45,6 +54,8 @@
             align-self: center;
             color: whitesmoke;
             text-decoration: overline;
+            font-size: 2rem;
+            margin-top: 2rem;
         }
 
         .tabla {
@@ -77,19 +88,30 @@
             text-align: center;
         }
 
+        form {
+            color: black;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
     </style>
 </head>
 
 <label for="nombre">Nombre</label>
-<input type="text" name="nombre" value="{{$contacto->nombre}}" id="nombre" placeholder="Nombre" class="input"/><br>
+<input type="text" name="nombre" value="{{ isset($contacto->nombre)?$contacto->nombre:old('nombre') }}" id="nombre"
+       placeholder="Nombre" class="input"/><br>
 <label for="apellido">Apellido</label>
-<input type="text" name="apellido" value="{{$contacto->apellido}}" id="apellido" placeholder="Apellido"
+<input type="text" name="apellido" value="{{ isset($contacto->apellido)?$contacto->apellido:old('apellido') }}"
+       id="apellido" placeholder="Apellido"
        class="input"/><br>
 <label for="telefono">Telefono</label>
-<input type="text" name="telefono" value="{{$contacto->telefono}}" id="telefono" placeholder="Teléfono"
+<input type="text" name="telefono" value="{{ isset($contacto->telefono)?$contacto->telefono:old('telefono') }}"
+       id="telefono" placeholder="Teléfono"
        class="input"/><br>
 <label for="email">Email</label>
-<input type="text" name="email" value="{{$contacto->email}}" id="email" placeholder="Email" class="input"/><br>
+<input type="text" name="email" value="{{ isset($contacto->email)?$contacto->email:old('email') }}" id="email"
+       placeholder="Email" class="input"/><br>
 <label for="foto">Foto</label>
 <img src="{{ asset('storage'.'/'.$contacto->foto) }}" alt="Imagen Contacto" width="70">
 <input type="file" name="foto" value="" id="foto" class="input"/><br>

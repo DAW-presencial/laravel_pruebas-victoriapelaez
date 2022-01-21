@@ -49,16 +49,18 @@ class AgendaController extends Controller
         $campos = [
             'nombre' => 'required|string',
             'apellido' => 'required|string',
-            'telefono' => 'required|char|max9',
-            'email' => 'required|email',
+            'telefono' => 'required|unique:contacto',
+            'email' => 'required|email|unique:contacto',
             'foto' => 'required|max:10000|mimes:jpeg,png,jpg'
         ];
         $mensaje = [
             'required' => 'El :attribute es requerido',
-            'foto.required' => 'La foto es requerida'
+            'foto.required' => 'La foto es requerida',
+            'email' => 'El email debe tener un formato xxxx@dominio.xxx',
+            'unique'=>'Este :attribute ya existe'
         ];
 
-        $this->validate($request,$campos,$mensaje);
+        $this->validate($request, $campos, $mensaje);
 
         //$datosagenda = request()->all();
         $datosagenda = request()->except('_token');
@@ -102,6 +104,24 @@ class AgendaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $campos = [
+            'nombre' => 'required|string',
+            'apellido' => 'required|string',
+            'telefono' => 'required',
+            'email' => 'required|email',
+        ];
+        $mensaje = [
+            'required' => 'El :attribute es requerido',
+            'email' => 'El email debe tener un formato xxxx@dominio.xxx'
+        ];
+
+        if ($request->hasFile('foto')) {
+            $campos = ['foto' => 'required|max:10000|mimes:jpeg,png,jpg'];
+            $mensaje = ['foto.required' => 'La foto es requerida',];
+        }
+
+        $this->validate($request, $campos, $mensaje);
+
         $datosagenda = request()->except(['_token', '_method']);
 
         if ($request->hasFile('foto')) {

@@ -128,13 +128,20 @@
             margin: 0;
         }
 
+        .msg-contacto {
+            margin: 2rem;
+            font-size: 1.5rem;
+            color: red;
+            font-style: italic;
+            text-align: center;
+        }
 
     </style>
 </head>
 <body>
 
 @include('layouts.navigation')
-<div>
+<div class="msg-contacto">
     @if(Session::has('mensaje'))
         {{ Session::get('mensaje') }}
     @endif

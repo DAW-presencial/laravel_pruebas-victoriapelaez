@@ -128,13 +128,13 @@
         @csrf
         {{--@include('agenda.form')--}}
         <label for="nombre">Nombre</label>
-        <input type="text" name="nombre" value="" id="nombre" placeholder="Nombre" class="input"/><br>
+        <input type="text" name="nombre" value="{{ isset($contacto->nombre)?$contacto->nombre:old('nombre') }}" id="nombre" placeholder="Nombre" class="input"/><br>
         <label for="apellido">Apellido</label>
-        <input type="text" name="apellido" value="" id="apellido" placeholder="Apellido" class="input"/><br>
+        <input type="text" name="apellido" value="{{ isset($contacto->apellido)?$contacto->apellido:old('apellido') }}" id="apellido" placeholder="Apellido" class="input"/><br>
         <label for="telefono">Telefono</label>
-        <input type="text" name="telefono" value="" id="telefono" placeholder="Teléfono" class="input"/><br>
+        <input type="text" name="telefono" value="{{ isset($contacto->telefono)?$contacto->telefono:old('telefono') }}" id="telefono" placeholder="Teléfono" class="input"/><br>
         <label for="email">Email</label>
-        <input type="text" name="email" value="" id="email" placeholder="Email" class="input"/><br>
+        <input type="text" name="email" value="{{ isset($contacto->email)?$contacto->email:old('email') }}" id="email" placeholder="Email" class="input"/><br>
         <label for="foto">Foto</label>
         <input type="file" name="foto" value="" id="foto" class="input"/><br>
         <input type="submit" value="Guardar Datos" class="boton"/>
