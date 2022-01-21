@@ -46,23 +46,23 @@ class AgendaController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AgendaRequest $request)
+    public function store(Request $request)
     {
-        /*$campos = [
+        $campos = [
             'nombre' => 'required|string',
             'apellido' => 'required|string',
             'telefono' => 'required|unique:contacto',
             'email' => 'required|email|unique:contacto',
             'foto' => 'required|max:10000|mimes:jpeg,png,jpg'
-        ];*/
-        /*$mensaje = [
+        ];
+        $mensaje = [
             'required' => 'El :attribute es requerido',
             'foto.required' => 'La foto es requerida',
             'email' => 'El email debe tener un formato xxxx@dominio.xxx',
             'unique'=>'Este :attribute ya existe'
-        ];*/
+        ];
 
-        $this->validate($request);
+        $this->validate($request,$campos, $mensaje);
 
         //$datosagenda = request()->all();
         $datosagenda = $request->except('_token');
