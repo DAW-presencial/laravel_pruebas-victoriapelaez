@@ -16,5 +16,8 @@ Route::resource('/agenda', AgendaController::class)->middleware(['auth'])->excep
 //Route::middleware(['auth'])->resource('agenda', AgendaController::class);
 
 
+//para devolver a una pagina cuando haya un error usar el provider routeService para hacer un fallback a la ruta que hayamos llamado
+//home
+Route::fallback('/dashboard');
 
 

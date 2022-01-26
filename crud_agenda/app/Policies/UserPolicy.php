@@ -10,7 +10,7 @@ class UserPolicy
     use HandlesAuthorization;
     public function before($user,$ability){
         if($user->role === 'super'){
-            return true;
+            return true;//si pongo false y no soy ese usuario petará la app porque ya no comprobaria lo otro
         }
     }
 

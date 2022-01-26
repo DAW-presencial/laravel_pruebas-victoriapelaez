@@ -1,2 +1,2 @@
 <?php
-echo "Error 404, no autorizada la entrada"
+echo "Error 404, no existe"

@@ -28,7 +28,6 @@ class AgendaController extends Controller
         //$datos['agenda']=Contacto::paginate(5);
         $datos = Contacto::all();
         return view('agenda.index', compact('datos'));
-
     }
 
     /**
@@ -48,9 +47,9 @@ class AgendaController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AgendaRequest $request)
     {
-        $campos = [
+        /*$campos = [
             'nombre' => 'required|string',
             'apellido' => 'required|string',
             'telefono' => 'required|unique:contacto',
@@ -64,9 +63,11 @@ class AgendaController extends Controller
             'unique' => 'Este :attribute ya existe'
         ];
 
-
         $this->authorize('create',new User());
-        $this->validate($request, $campos, $mensaje);
+        $this->validate($request, $campos, $mensaje);*/
+        $this->authorize('create',new User());
+       // $this->validate($request);
+
 
         //$datosagenda = request()->all();
         $datosagenda = $request->except('_token');
@@ -109,9 +110,9 @@ class AgendaController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, User $user)
+    public function update(AgendaRequest $request, $id, User $user)
     {
-        $campos = [
+        /*$campos = [
             'nombre' => 'required|string',
             'apellido' => 'required|string',
             'telefono' => 'required',
@@ -120,7 +121,7 @@ class AgendaController extends Controller
         $mensaje = [
             'required' => 'El :attribute es requerido',
             'email' => 'El email debe tener un formato xxxx@dominio.xxx'
-        ];
+        ];*/
 
         if ($request->hasFile('foto')) {
             $campos = ['foto' => 'required|max:10000|mimes:jpeg,png,jpg'];
@@ -128,7 +129,7 @@ class AgendaController extends Controller
         }
 
         $this->authorize('update',$user);
-        $this->validate($request, $campos, $mensaje);
+       /* $this->validate($request, $campos, $mensaje);*/
 
         $datosagenda = request()->except(['_token', '_method']);
 

@@ -114,7 +114,9 @@
 </div>
 <div class="input-container">
 
-    @if(count($errors)>0)
+    @if(count($errors)>0) {{--($errors->any())--}}
+
+{{--{{errors->first('cif')}} para posicionarlo denajo de un input--}}
         <div class="mensaje">
             <ul>
                 @foreach($errors->all() as $error)
@@ -138,6 +140,11 @@
         <label for="foto">Foto</label>
         <input type="file" name="foto" value="" id="foto" class="input"/><br>
         <input type="submit" value="Guardar Datos" class="boton"/>
+
+        {{--input type radio button value='primario' name sector {{(old('sector')== 'primario ? 'checked' : "")}}
+                                value 'secundario'--}}
+        {{--input type select name='jornada' value='continua' @if (old('jornada') === 'continua' selected @endif
+                            value='partida' --}}
 
     </form>
 </div>
