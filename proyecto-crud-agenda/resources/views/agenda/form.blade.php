@@ -1,26 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <title>agendaDB</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-        .header {
-            color: #36A0FF;
-            font-size: 27px;
-            padding: 10px;
-        }
-
-        .bigicon {
-
-            color: #36A0FF;
-        }
-    </style>
-</head>
-<body>
+@include('layouts.head')
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -28,7 +6,7 @@
                 @csrf
 
                 <fieldset>
-                    <legend class="text-center header">Crear Contacto</legend>
+                    <legend class="text-center header"></legend>
 
                     <div class="form-group">
                         <i class="fa fa-user bigicon"></i>
@@ -133,7 +111,7 @@
                         <input type="file" name="foto" value="" id="foto" class="col-form-label"/><br>
                     </div>
 
-                    <button type="submit" class="btn btn-primary mb-2">Guardar Contacto</button>
+                    <button type="submit"  class="btn btn-primary mb-2">Aceptar</button>
 
                 </fieldset>
             </form>
