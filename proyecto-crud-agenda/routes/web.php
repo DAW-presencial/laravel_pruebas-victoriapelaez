@@ -22,3 +22,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::get('/form', function (){
+    return view('agenda.form');
+});
+Route::post('/agenda', function (){
+    echo'próximamente será al vista agenda';
+});
