@@ -73,9 +73,9 @@
                     <div class="form-group">
                         <i class="fa fa-user bigicon"></i>
                         <label for="nacimiento" class="col-sm-2 col-form-label">Fecha de nacimiento</label>
-                        <input type="date" name="date"
-                               value="{{ isset($contacto->fecha_nacimiento)?$contacto->fecha_nacimiento:old('edad') }}"
-                               id="edad"
+                        <input type="date" name="nacimiento"
+                               value="{{ isset($contacto->nacimiento)?$contacto->nacimiento:old('nacimiento') }}"
+                               id="nacimiento"
                                class="form-control"/><br>
                     </div>
 
