@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
     }
-
+//comentario para hacer prueba por error al intentar crear el primer tag
     /**
      * Reverse the migrations.
      *
