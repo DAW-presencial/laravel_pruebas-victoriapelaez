@@ -22,7 +22,7 @@ class CreateContactosTable extends Migration
 
             $table->integer('edad')->nullable();
             $table->date('nacimiento')->nullable();
-            $table->enum('deportes',['futlbol','basket','tennis'])->nullable();
+            $table->enum('deportes',['futbol','basket','tennis'])->nullable();
             $table->enum('idioma',['espanol','ingles'])->nullable();
             $table->text('descripcion')->nullable();
             $table->enum('color',['rojo','azul','verde','amarillo'])->nullable();
