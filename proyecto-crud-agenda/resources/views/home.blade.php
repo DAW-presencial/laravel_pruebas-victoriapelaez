@@ -2,6 +2,6 @@
 @include('layouts.navigation')
 
 <main>
-    <p class="header text-center m-5">Bienvenido a la Agenda de Contactos.
+    <p class="header text-center m-5">@lang('Bienvenido a la Agenda de Contactos').
     </p>
 </main>

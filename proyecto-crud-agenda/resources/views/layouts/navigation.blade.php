@@ -22,6 +22,13 @@
                         {{ __('Contactos') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex align-self-center">
+                    <ul class="nav">
+                        <li class="nav-item"><a href="{{route('set_language', ['en'])}}" class="nav-link">En</a></li>
+                        <li class="nav-item"><a href="{{route('set_language', ['es'])}}" class="nav-link">Es</a></li>
+                        <li class="nav-item"><a href="{{route('set_language', ['ca'])}}" class="nav-link">Ca</a></li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

@@ -77,7 +77,6 @@ class ContactoController extends Controller
 
         $datos = request()->except(['_token', '_method']);
         Contacto::where('id', '=', $id)->update($datos);
-        //return view('agenda.edit', compact('contacto'));
         return redirect('contactos');
     }
 
