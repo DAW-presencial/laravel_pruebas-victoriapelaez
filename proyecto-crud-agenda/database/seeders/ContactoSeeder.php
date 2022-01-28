@@ -31,6 +31,18 @@ class ContactoSeeder extends Seeder
                 'telefono' => '222222222',
                 'email' => 'ramon@gmail.com'
             ],
+            [
+                'nombre' => 'Joan',
+                'apellido' => 'Rebassa',
+                'telefono' => '333333333',
+                'email' => 'joan@gmail.com'
+            ],
+            [
+                'nombre' => 'Carmen',
+                'apellido' => 'Lozano',
+                'telefono' => '444444444',
+                'email' => 'carmen@gmail.com'
+            ],
         ];
         DB::table('contactos')->insert($contactos);
     }
