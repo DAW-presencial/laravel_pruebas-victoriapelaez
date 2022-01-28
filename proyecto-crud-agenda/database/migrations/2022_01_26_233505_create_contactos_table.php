@@ -19,17 +19,12 @@ class CreateContactosTable extends Migration
             $table->string('apellido', 50);
             $table->char('telefono', 9)->unique();
             $table->string('email', 50)->unique();
-
             $table->integer('edad')->nullable();
             $table->date('nacimiento')->nullable();
-            $table->enum('deportes',['futbol','basket','tennis'])->nullable();
             $table->enum('idioma',['espanol','ingles'])->nullable();
             $table->text('descripcion')->nullable();
             $table->enum('color',['rojo','azul','verde','amarillo'])->nullable();
-
-
-
-            $table->string('foto')->nullable();
+            $table->boolean('privacidad')->default("true");
 
             $table->timestamps();
             $table->softDeletes();

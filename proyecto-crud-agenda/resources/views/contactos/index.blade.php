@@ -17,7 +17,6 @@
                 <th scope="col" class="text-center">@lang('Acciones')</th>
 
                 <th scope="col" class="text-center">@lang('Id')</th>
-                <th scope="col" class="text-center">@lang('Foto')</th>
                 <th scope="col" class="text-center">@lang('Nombre')</th>
                 <th scope="col" class="text-center">@lang('Apellido')</th>
                 <th scope="col" class="text-center">@lang('Teléfono')</th>
@@ -25,7 +24,7 @@
                 <th scope="col" class="text-center">@lang('Edad')</th>
                 <th scope="col" class="text-center">@lang('Cumpleaños')</th>
                 <th scope="col" class="text-center">@lang('Idioma')</th>
-                {{--<th scope="col">Deportes</th>
+                {{--<th scope="col">Privacidad</th>
                 <th scope="col">Descripción</th>--}}
                 <th scope="col">@lang('Color')</th>
 
@@ -41,27 +40,16 @@
                                     @lang('Editar')
                                 </button>
                             </a>
-                            {{--<a href="{{ url('/contactos/'.$dato->id.'/edit') }}" class="">
-                                Editar
-                            </a>--}}
-                            {{--<a href="{{ url('/contactos/'.$dato->id) }}" class="col align-self-center text-right">
-                                <button class="btn btn-success" onclick="return confirm('¿Deseas borrar el contacto?')">
-                                    Borrar
-                                </button>
-                            </a>--}}
                             <form action="{{ url('/contactos/'.$dato->id) }}" method="post" class="text-center m-2">
                                 @csrf
                                 {{ method_field('DELETE') }}
-                                <button class="btn btn-danger" onclick="return confirm('¿Deseas borrar el contacto?')">
+                                <button class="btn btn-danger" onclick="return confirm(@lang('¿Deseas borrar el contacto?')">
                                     @lang('Borrar')
                                 </button>
                             </form>
                         </div>
                     </td>
                     <td>{{$dato->id}}</td>
-                    <td>
-                        {{--<img src="{{ asset('storage/'.$dato->foto) }}" alt="Imagen Contacto" class="img-fluid img img-thumbnail">--}}
-                    </td>
                     <td>{{$dato->nombre}}</td>
                     <td>{{$dato->apellido}}</td>
                     <td>{{$dato->telefono}}</td>

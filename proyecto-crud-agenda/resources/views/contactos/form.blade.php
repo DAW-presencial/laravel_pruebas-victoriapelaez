@@ -50,25 +50,7 @@
                class="form-control"/><br>
     </div>
 
-    <i class="fa fa-pencil-square-o bigicon"></i>
-    @lang('Deportes que practica'):<br><br>
-    <div class="form-check">
-        <label for="deporte" class="col-sm-2 col-form-label">
-            <input type="checkbox" name="deporte[]" id="futbol" class="form-check-input" value="1"
-                   @if(is_array(old('deporte')) && in_array(1, old('deporte'))) checked @endif/>@lang('Fútbol')
-        </label><br>
-        <label for="deporte" class="col-sm-2 col-form-label">
-            <input type="checkbox" name="deporte[]" id="basket" class="form-check-input" value="2"
-                   @if(is_array(old('deporte')) && in_array(2, old('deporte'))) checked @endif/>@lang('Basket')
-        </label><br>
-        <label for="deporte" class="col-sm-2 col-form-label">
-            <input type="checkbox" name="deporte[]" id="tennis" class="form-check-input" value="3"
-                   @if(is_array(old('deporte')) && in_array(3, old('deporte'))) checked @endif/>@lang('Tennis')
-        </label><br>
-    </div>
-    <br>
-
-    <i class="fa fa-pencil-square-o bigicon"></i>
+        <i class="fa fa-pencil-square-o bigicon"></i>
     @lang('Idioma'):<br><br>
     <div class="form-check">
         <input type="radio" id="espanol" name="idioma" class="form-check-input"
@@ -99,11 +81,15 @@
     </div>
     <br>
 
-    <div class="form-group">
-        <i class="fa fa-user bigicon"></i>
-        <label for="foto" class="col-sm-2 col-form-label">@lang('Foto')</label><br>
-        <input type="file" name="foto" value="" id="foto" class="col-form-label"/><br>
+
+    <div class="form-check">
+        <label for="privacidad" class="col-sm-2 col-form-label">
+            <input type="checkbox" name="privacidad" id="privacidad" class="form-check-input" value="1"
+            {{ old('privacidad') ? 'checked="checked"' : '' }}>@lang('Acepto los términos de privacidad')
+        </label><br>
+
     </div>
+    <br>
 
     <button type="submit" class="btn btn-primary mb-2">@lang('Aceptar')</button>
 
