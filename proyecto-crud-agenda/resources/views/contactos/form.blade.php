@@ -69,8 +69,9 @@
         </textarea><br>
     </div>
 
-    <i class="fa fa-pencil-square-o bigicon"></i>
-    <label for="cars" class="col-sm-2 col-form-label">@lang('Elije un color favorito'):</label><br>
+    <div class="d-flex w-25">
+    <i class="fa fa-pencil-square-o bigicon align-self-center"></i>
+    <label for="cars" class="col col-form-label">@lang('Elije un color favorito'):</label><br>
     <div class="form-check">
         <select name="color" id="color" class="form-check-input">
             <option value="rojo" @if (old('color') === 'rojo') selected @endif>@lang('Rojo')</option>
@@ -79,11 +80,12 @@
             <option value="amarillo" @if (old('color') === 'amarillo') selected @endif>@lang('Amarillo')</option>
         </select><br>
     </div>
-    <br>
+    </div>
+    <br><br>
 
 
     <div class="form-check">
-        <label for="privacidad" class="col-sm-2 col-form-label">
+        <label for="privacidad" class="col col-form-label">
             <input type="checkbox" name="privacidad" id="privacidad" class="form-check-input" value="1"
             {{ old('privacidad') ? 'checked="checked"' : '' }}>@lang('Acepto los términos de privacidad')
         </label><br>
