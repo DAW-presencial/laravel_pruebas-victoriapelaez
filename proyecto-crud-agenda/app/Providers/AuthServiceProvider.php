@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -25,6 +26,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('index-contacto', function (User $user) {
+            return true;
+        });
+        Gate::define('create-contacto', 'App\Policies\UserPolicy@create');
+        Gate::define('update-contacto','App\Policies\UserPolicy@update');
+        Gate::define('delete-contacto','App\Policies\UserPolicy@delete');
     }
 }
