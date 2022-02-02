@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contacto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ContactoController extends Controller
@@ -15,7 +16,9 @@ class ContactoController extends Controller
      */
     public function index()
     {
-        $datos = Contacto::all();
+        $datos = DB::table('contactos')
+            ->orderBy('id', 'asc')
+            ->get();
         return view('contactos.index', compact('datos'));
     }
 
@@ -64,6 +67,8 @@ class ContactoController extends Controller
     {
         $datos = Contacto::findOrFail($id);
         return view('contactos.edit', compact('datos'));
+
+        /*return view('contactos.edit', compact('contacto'));*///Poner Contacto$contacto como parámetro y cambiar $datos en index
     }
 
     /**
