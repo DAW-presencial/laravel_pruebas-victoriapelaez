@@ -38,8 +38,6 @@
                 <th scope="col" class="text-center">@lang('Edad')</th>
                 <th scope="col" class="text-center">@lang('Cumpleaños')</th>
                 <th scope="col" class="text-center">@lang('Idioma')</th>
-                {{--<th scope="col">Privacidad</th>
-                <th scope="col">Descripción</th>--}}
                 <th scope="col" class="text-center">@lang('Color')</th>
             </tr>
             </thead>
@@ -48,6 +46,11 @@
                 <tr class="text-center">
                     <td>
                         <div class="row justify-center">
+                            <form action="{{ url('/contactos/'.$dato->id) }} " class="m-1">
+                                <button type="submit" class="btn btn-primary">
+                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAnJJREFUSEvFlv0xBFEQxPsiQASIABEgAkRABogAESACRIAIEAEiQAZEQP2udq76xuzH3T83VVdXu+/t9HTPx3sjLchGC8LVPMA7kpYkbTZBv0n6ksT/YBsKvCbpTNK+pOUW79+SHiRdSPrsi6APGJBLSUd9jtL6raRTSQRTWhcwLO9NUhw8NpI+m7RIjvz87xkK0h+0sW8DBvTVZCWHsAawywgAtqvNJhhvVeAVMPI+GdNrSedJNgA2rLheLBq+Z/+xre9m2StgIj5sPgL0xJwi502Sn+VK1isDv8t1koGR+KMBQl6AokBggvzsqYxKRlbfT0Ah+7pLnoGdLfJ4TmPtp4me1sHIPezo7awQKSFt2BTrDEy0OKB66Vk3oiev2Tl7Qlb2wNqN4LcbJVZiwYE9OoYABeL22zxUa+xlwGCZjK8R1HjC+SYY0rdYlpl3Qxi/F4XnfunrcYoc2CNDkjx1Qk7eU+nkDCPHVDpWpcELdqLWLMBUtVdpysT4oPAuiPVe4D6pcYQTpIrhEc6RmO+rw6H0O0txOcOYzZH7rlHqKZzUziztFPmkNfIQgSngkXcPMtqJ/p8cqUMHCLljELSdxQFE4cEqLgWDB4hvjBEYozJAKaKcSxTIJxJB+IidatHqkPDhTnvAFnkxDnfWK6PFuDRgyEvBxQn1r83ajsWqbaqJlQPwoGOtbLO2iwAsaZuQDyfVNMvAnirWYM2A+XcR7Lr6kFMk857lGVY4jDyTX/YgNcDe2zyX964hlz0c8uPUGmK0DcHxm+uy5yCwBzxOoLYAqINOwPiwj3EFQBDUgF/oyWEru8rJPMBD5O7dszDgP/X7pB/IszboAAAAAElFTkSuQmCC"/>
+                                </button>
+                            </form>
                             @if ( Gate::allows('update-contacto'))
                                 <form action="{{ url('/contactos/'.$dato->id.'/edit') }}" class="m-1">
                                     <button type="submit" class="btn btn-success" enabled>
@@ -92,8 +95,6 @@
                     <td>{{$dato->edad}}</td>
                     <td>{{$dato->nacimiento}}</td>
                     <td>{{$dato->idioma}}</td>
-                    {{--<td>{{$dato->deportes}}</td>
-                    <td>{{$dato->descripcion}}</td>--}}
                     <td>{{$dato->color}}</td>
                 </tr>
             @endforeach
