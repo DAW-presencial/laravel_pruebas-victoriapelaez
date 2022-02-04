@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactoRequest;
 use App\Models\Contacto;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class ContactoController extends Controller
@@ -16,9 +20,15 @@ class ContactoController extends Controller
      */
     public function index()
     {
+        $this->authorize('index-contacto');
+        /*$datos = Contacto::all()->sortBy('id');*/
+
         $datos = DB::table('contactos')
+            ->where('deleted_at', null)
+            ->where('user_id', Auth::id())
             ->orderBy('id', 'asc')
             ->get();
+
         return view('contactos.index', compact('datos'));
     }
 
@@ -27,8 +37,9 @@ class ContactoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
+        $this->authorize('create', $user);
         return view('contactos.create');
     }
 
@@ -38,11 +49,14 @@ class ContactoController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(ContactoRequest $request)
     {
-        $datos = $request->except('_token');
-        Contacto::insert($datos);
-        return redirect('contactos');
+        $this->authorize('create', new User());
+        $contacto = Contacto::create($request->all());
+        $contacto->user_id=Auth::id();
+        $contacto->save();
+
+        return redirect('contactos')->with('mensaje', __("message.agregado"));
     }
 
     /**
@@ -63,8 +77,9 @@ class ContactoController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, User $user)
     {
+        $this->authorize('update', $user);
         $datos = Contacto::findOrFail($id);
         return view('contactos.edit', compact('datos'));
 
@@ -78,12 +93,11 @@ class ContactoController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ContactoRequest $request, $id, User $user)
     {
-
-        $datos = request()->except(['_token', '_method']);
-        Contacto::where('id', '=', $id)->update($datos);
-        return redirect('contactos');
+        $this->authorize('update', $user);
+        Contacto::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        return redirect('contactos')->with('mensaje', __("message.actualizado"));
     }
 
     /**
@@ -94,9 +108,14 @@ class ContactoController extends Controller
      */
     public function destroy($id)
     {
-        $datos = Contacto::findOrFail($id);
+        if (!Gate::allows('delete-contacto')) {
+            Abort(403);
+        }
+        /*$this->authorize('delete',$user);*/
+        /*Contacto::findOrFail($id);*/
         Contacto::destroy($id);
 
-        return redirect('contactos');
+
+        return redirect('contactos')->with('mensaje', __("message.borrado"));
     }
 }
