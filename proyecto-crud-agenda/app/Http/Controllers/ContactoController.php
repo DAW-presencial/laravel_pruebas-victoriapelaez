@@ -21,8 +21,6 @@ class ContactoController extends Controller
     public function index()
     {
         $this->authorize('index-contacto');
-        /*$datos = Contacto::all()->sortBy('id');*/
-
         $datos = DB::table('contactos')
             ->where('deleted_at', null)
             ->where('user_id', Auth::id())

@@ -7,7 +7,7 @@
 </div>
 <div class="container">
     @if($errors->any())
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-warning" role="alert">
             <ul>
                 @foreach($errors->all() as $error)
                     <li> {{$error}} </li>
@@ -30,6 +30,10 @@
                         <input type="text" name="nombre"
                                value="{{ isset($datos->nombre)?$datos->nombre:old('nombre') }}"
                                id="nombre" placeholder="Nombre" class="form-control"/><br>
+                        @error('nombre')
+                        <small class="alert alert-danger">{{ $message }}</small>
+                        @enderror
+                        <br>
                     </div>
 
                     <div class="form-group">
@@ -38,6 +42,10 @@
                         <input type="text" name="apellido"
                                value="{{ isset($datos->apellido)?$datos->apellido:old('apellido') }}"
                                id="apellido" placeholder="Apellido" class="form-control"/><br>
+                        @error('apellido')
+                        <small class="alert alert-danger">{{ $message }}</small>
+                        @enderror
+                        <br>
                     </div>
 
                     <div class="form-group">
@@ -46,6 +54,10 @@
                         <input type="text" name="telefono"
                                value="{{ isset($datos->telefono)?$datos->telefono:old('telefono') }}"
                                id="telefono" placeholder="Teléfono" class="form-control"/><br>
+                        @error('telefono')
+                        <small class="alert alert-danger">{{ $message }}</small>
+                        @enderror
+                        <br>
                     </div>
 
                     <div class="form-group">
@@ -54,6 +66,10 @@
                         <input type="text" name="email"
                                value="{{ isset($datos->email)?$datos->email:old('email') }}" id="email"
                                placeholder="Email" class="form-control"/><br>
+                        @error('email')
+                        <small class="alert alert-danger">{{ $message }}</small>
+                        @enderror
+                        <br>
                     </div>
 
                     <div class="form-group">
