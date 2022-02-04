@@ -3,9 +3,18 @@
 
 <div class="container">
     <div class="header text-uppercase p-5">
-        <h3 class="border-bottom border-primary">Editar Contacto</h3></div>
+        <h3 class="border-bottom border-primary">@lang('Editar Contacto')</h3></div>
 </div>
 <div class="container">
+    @if($errors->any())
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li> {{$error}} </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-12">
             <form action="{{ url('/contactos/'.$datos->id) }}" method="post" class=" well form-horizontal"

@@ -14,7 +14,7 @@
     <p class="font-italic text-center">{{$contacto->nacimiento}}</p>
     <p class="text-uppercase text-success font-weight-bold text-center ">@lang('Idioma')</p>
     <p class="font-italic text-center">{{$contacto->idioma}}</p>
-    <p class="text-uppercase text-success font-weight-bold text-center ">Descripción</p>
+    <p class="text-uppercase text-success font-weight-bold text-center ">{{ __('Descripción')}}</p>
     <p class="font-italic text-center">{{$contacto->descripcion}}</p>
     <p class="text-uppercase text-success font-weight-bold text-center ">@lang('Color')</p>
     <p class="font-italic text-center">{{$contacto->color}}</p>

@@ -5,6 +5,15 @@
         <h3 class="border-bottom border-primary">{{__('Crear Contacto')}}</h3></div>
 </div>
 <div class="container">
+    @if($errors->any())
+        <div class="alert alert-warning" role="alert">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li> {{$error}} </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-12">
             <form action="{{ url('/contactos') }}" method="post" class=" well form-horizontal"
@@ -19,6 +28,10 @@
                         <input type="text" name="nombre"
                                value="{{ isset($datos->nombre)?$datos->nombre:old('nombre') }}"
                                id="nombre" placeholder="Nombre" class="form-control"/><br>
+                        @error('nombre')
+                        <small class="alert alert-danger">{{ $message }}</small>
+                        @enderror
+                        <br>
                     </div>
 
                     <div class="form-group">
@@ -27,6 +40,10 @@
                         <input type="text" name="apellido"
                                value="{{ isset($datos->apellido)?$datos->apellido:old('apellido') }}"
                                id="apellido" placeholder="Apellido" class="form-control"/><br>
+                        @error('apellido')
+                        <small class="alert alert-danger">{{ $message }}</small>
+                        @enderror
+                        <br>
                     </div>
 
                     <div class="form-group">
@@ -35,6 +52,10 @@
                         <input type="text" name="telefono"
                                value="{{ isset($datos->telefono)?$datos->telefono:old('telefono') }}"
                                id="telefono" placeholder="Teléfono" class="form-control"/><br>
+                        @error('telefono')
+                        <small class="alert alert-danger">{{ $message }}</small>
+                        @enderror
+                        <br>
                     </div>
 
                     <div class="form-group">
@@ -43,6 +64,10 @@
                         <input type="text" name="email"
                                value="{{ isset($datos->email)?$datos->email:old('email') }}" id="email"
                                placeholder="Email" class="form-control"/><br>
+                        @error('email')
+                        <small class="alert alert-danger">{{ $message }}</small>
+                        @enderror
+                        <br>
                     </div>
 
                     <div class="form-group">
@@ -67,10 +92,12 @@
                     <div class="form-check">
                         <label for="idioma" for="idioma">
                             <input class="form-check-input" type="radio"
-                                   name="idioma" value="espanol" {{ old('idioma') == 'espanol' ? 'checked' : '' }}/> @lang('Español')
+                                   name="idioma"
+                                   value="espanol" {{ old('idioma') == 'espanol' ? 'checked' : '' }}/> @lang('Español')
                             <br>
                             <input class="form-check-input" type="radio"
-                                   name="idioma" value="ingles" {{ old('idioma') == 'ingles' ? 'checked' : '' }}/> @lang("Inglés")
+                                   name="idioma"
+                                   value="ingles" {{ old('idioma') == 'ingles' ? 'checked' : '' }}/> @lang("Inglés")
                         </label>
 
                     </div>
@@ -78,7 +105,8 @@
 
                     <div class="form-group">
                         <i class="fa fa-pencil-square-o bigicon"></i>
-                        <label for="descripcion" class="col-form-label">@lang('Escribe una breve descripción de ti'):</label><br>
+                        <label for="descripcion" class="col-form-label">@lang('Escribe una breve descripción de ti')
+                            :</label><br>
                         <textarea id="descripcion" name="descripcion" class="form-control" rows="4" cols="50">{{ isset($datos->descripcion)?$datos->descripcion:old('descripcion') }}
         </textarea><br>
                     </div>
@@ -88,10 +116,14 @@
                         <label for="color" class="col col-form-label">@lang('Elije un color favorito'):</label><br>
                         <div class="form-check">
                             <select name="color" id="color" class="form-check-input">
-                                <option value="rojo" @if (old('color') === 'rojo') selected @endif>@lang('Rojo')</option>
-                                <option value="azul" @if (old('color') === 'azul') selected @endif>@lang('Azul')</option>
-                                <option value="verde" @if (old('color') === 'verde') selected @endif>@lang('Verde')</option>
-                                <option value="amarillo" @if (old('color') === 'amarillo') selected @endif>@lang('Amarillo')</option>
+                                <option value="rojo"
+                                        @if (old('color') === 'rojo') selected @endif>@lang('Rojo')</option>
+                                <option value="azul"
+                                        @if (old('color') === 'azul') selected @endif>@lang('Azul')</option>
+                                <option value="verde"
+                                        @if (old('color') === 'verde') selected @endif>@lang('Verde')</option>
+                                <option value="amarillo"
+                                        @if (old('color') === 'amarillo') selected @endif>@lang('Amarillo')</option>
                             </select><br>
                         </div>
                     </div>

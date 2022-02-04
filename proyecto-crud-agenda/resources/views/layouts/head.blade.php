@@ -34,6 +34,13 @@
             color: #36A0FF;
         }
 
+        .msg-contacto {
+            margin: 2rem;
+            font-size: 1.5rem;
+            color: red;
+            font-style: italic;
+            text-align: center;
+        }
 
     </style>
 </head>

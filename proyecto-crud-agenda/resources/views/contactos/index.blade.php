@@ -1,5 +1,11 @@
 @include('layouts.head')
 @include('layouts.navigation')
+
+@if(Session::has('mensaje'))
+<div class="msg-contacto alert alert-danger">
+        {{ Session::get('mensaje') }}
+    @endif
+</div>
 <div class="container">
     <h1 class="header m-5 border-bottom">@lang('AGENDA CONTACTOS')</h1>
 
