@@ -16,7 +16,7 @@ class Contacto extends Model
     protected $fillable = [
         'nombre',
         'apellido',
-        'teléfono',
+        'telefono',
         'email',
         'edad',
         'nacimiento',
@@ -26,9 +26,9 @@ class Contacto extends Model
         'privacidad',
         'user_id'
     ];
-    protected $guarded = [
+    /*protected $guarded = [
         'id'
-    ];
+    ];*/
 
     public function user()
     {

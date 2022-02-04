@@ -23,7 +23,9 @@ class ContactoSeeder extends Seeder
                 'edad'=>'34',
                 'nacimiento'=>'1988/01/13',
                 'idioma'=>'espanol',
-                'color'=>'rojo'
+                'color'=>'rojo',
+                'user_id'=>'1'
+
             ], [
                 'nombre' => 'Patricia',
                 'apellido' => 'Peláez',
@@ -32,7 +34,8 @@ class ContactoSeeder extends Seeder
                 'edad'=>'40',
                 'nacimiento'=>'1981/08/10',
                 'idioma'=>'espanol',
-                'color'=>'amarillo'
+                'color'=>'amarillo',
+                'user_id'=>'1'
             ], [
                 'nombre' => 'Ramón',
                 'apellido' => 'Peláez',
@@ -41,7 +44,8 @@ class ContactoSeeder extends Seeder
                 'edad'=>'67',
                 'nacimiento'=>'1955/10/13',
                 'idioma'=>'espanol',
-                'color'=>'azul'
+                'color'=>'azul',
+                'user_id'=>'2'
             ],
             [
                 'nombre' => 'Joan',
@@ -51,7 +55,8 @@ class ContactoSeeder extends Seeder
                 'edad'=>'33',
                 'nacimiento'=>'1988/11/13',
                 'idioma'=>'espanol',
-                'color'=>'verde'
+                'color'=>'verde',
+                'user_id'=>'2'
             ],
             [
                 'nombre' => 'Carmen',
@@ -61,7 +66,8 @@ class ContactoSeeder extends Seeder
                 'edad'=>'63',
                 'nacimiento'=>'1959/09/23',
                 'idioma'=>'espanol',
-                'color'=>'rojo'
+                'color'=>'rojo',
+                'user_id'=>'1'
             ],
         ];
         DB::table('contactos')->insert($contactos);

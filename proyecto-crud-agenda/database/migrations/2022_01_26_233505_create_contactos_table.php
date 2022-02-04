@@ -15,32 +15,28 @@ class CreateContactosTable extends Migration
     {
         Schema::create('contactos', function (Blueprint $table) {
             $table->id();
+
             $table->string('nombre', 50);
             $table->string('apellido', 50);
-            $table->char('telefono', 9)->unique();
-            $table->string('email', 50)->unique();
+            $table->char('telefono', 9);
+            $table->string('email', 50);
             $table->integer('edad')->nullable();
             $table->date('nacimiento')->nullable();
-            $table->enum('idioma',['espanol','ingles'])->nullable();
+            $table->enum('idioma', ['espanol', 'ingles'])->nullable();
             $table->text('descripcion')->nullable();
-            $table->enum('color',['rojo','azul','verde','amarillo'])->nullable();
+            $table->enum('color', ['rojo', 'azul', 'verde', 'amarillo'])->nullable();
             $table->boolean('privacidad')->default("true");
 
             $table->timestamps();
             $table->softDeletes();
 
-            $table->unsignedBigInteger('user_id')->after('email')->nullable();
+        });
+        Schema::table('contactos', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id')->nullable()->after('id');
             $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('set null');
         });
-
-       /* Schema::table('contactos', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->nullable()->after('email');
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('set null');
-        });*/
     }
 
     /**
