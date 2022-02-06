@@ -50,6 +50,40 @@ class ContactoController extends Controller
     public function store(ContactoRequest $request)
     {
         $this->authorize('create', new User());
+
+        //Raw
+        /*$nombre = $request->nombre;
+        $apellido = $request->apellido;
+        $telefono = $request->telefono;
+        $email = $request->email;
+        $edad = $request->edad;
+        $nacimiento = $request->nacimiento;
+        $idioma = $request->idioma;
+        $descripcion = $request->descripcion;
+        $color = $request->color;
+        $privacidad = $request->privacidad;
+        $user_id = $request->user()->id;
+
+        DB::insert('insert into contactos (nombre, apellido, telefono, email, edad, nacimiento, idioma, descripcion,color,privacidad, user_id)
+        values ($nombre, $apellido, $telefono, $email, $edad, $nacimiento, $idioma, $descripcion,$color,$privacidad, $user_id)');
+        */
+
+        //Query Builder
+        /*DB::table('contactos')->insert([
+            'nombre' => $request->nombre,
+            'apellido' => $request->apellido,
+            'telefono' => $request->telefono,
+            'email' => $request->email,
+            'edad' => $request->edad,
+            'nacimiento' => $request->nacimiento,
+            'idioma' => $request->idioma,
+            'descripcion' => $request->descripcion,
+            'color' => $request->color,
+            'privacidad' => $request->privacidad,
+            'user_id' => $request->user()->id
+        ]);*/
+
+        //Eloquent
         $contacto = Contacto::create($request->all());
         $contacto->user_id=Auth::id();
         $contacto->save();
