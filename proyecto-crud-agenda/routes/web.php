@@ -20,3 +20,7 @@ Route::resource('/contactos', ContactoController::class)
     ->parameter('contactos', 'contacto');
 
 Route::get('/set_language/{lang}', [Controller::class, 'set_language'])->name('set_language');
+
+Route::fallback(function () {
+    return view('/');
+});
