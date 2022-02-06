@@ -129,12 +129,17 @@
                     </div>
                     <br><br>
 
-                    <div class="form-check">
+                    <div class="mb-3">
+                        <i class="fa fa-pencil-square-o bigicon"></i>
+                        <label for="formFile" class="form-label">Añadir foto</label>
+                        <input class="form-control border-0" type="file" id="formFile" name="foto">
+                    </div><br>
+
+                    <div class="form-check mb-5">
                         <label for="privacidad" class="col col-form-label">
                             <input type="checkbox" name="privacidad" id="privacidad" class="form-check-input" value="1"
                                    @if(isset($datos->privacidad)) @if($datos->privacidad=="1") checked @endif @endif >@lang('Acepto los términos de privacidad')
                         </label><br>
-
                     </div>
                     <br>
 

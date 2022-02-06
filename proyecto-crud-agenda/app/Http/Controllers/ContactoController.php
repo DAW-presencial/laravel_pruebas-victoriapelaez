@@ -85,7 +85,10 @@ class ContactoController extends Controller
 
         //Eloquent
         $contacto = Contacto::create($request->all());
-        $contacto->user_id=Auth::id();
+        if ($request->hasFile('foto')) {
+            $contacto['foto'] = $request->file('foto')->store('uploads', 'public');
+        }
+        $contacto->user_id = Auth::id();
         $contacto->save();
 
         return redirect('contactos')->with('mensaje', __("message.agregado"));
@@ -128,7 +131,15 @@ class ContactoController extends Controller
     public function update(ContactoRequest $request, $id, User $user)
     {
         $this->authorize('update', $user);
+
+        if ($request->hasFile('foto')) {
+            $contacto = Contacto::findOrFail($id);
+            Storage::delete('public/' . $contacto->foto);
+            $contacto['foto'] = $request->file('foto')->store('uploads', 'public');
+            Contacto::where('id', '=', $id)->update($request->except(['_token', '_method']));
+        }
         Contacto::where('id', '=', $id)->update($request->except(['_token', '_method']));
+
         return redirect('contactos')->with('mensaje', __("message.actualizado"));
     }
 
@@ -144,9 +155,12 @@ class ContactoController extends Controller
             Abort(403);
         }
         /*$this->authorize('delete',$user);*/
-        /*Contacto::findOrFail($id);*/
-        Contacto::destroy($id);
 
+        $contacto = Contacto::findOrFail($id);
+        if (Storage::delete('storage/' . $contacto->foto)) {
+            Contacto::destroy($id);
+        }
+        Contacto::destroy($id);
 
         return redirect('contactos')->with('mensaje', __("message.borrado"));
     }

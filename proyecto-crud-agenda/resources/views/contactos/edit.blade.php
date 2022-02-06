@@ -124,6 +124,13 @@
                     </div>
                     <br><br>
 
+                    <div class="mb-3">
+                        <i class="fa fa-pencil-square-o bigicon"></i>
+                        <label for="formFile" class="form-label">Añadir foto</label>
+                        <img src="{{ asset('storage').'/'.$datos->foto }}" alt="Imagen Contacto" class="img-fluid img-thumbnail" width="50">
+                        <input class="form-control border-0" type="file" id="formFile" name="foto" value="">
+                    </div><br>
+
                     <div class="form-check">
                         <label for="privacidad" class="col col-form-label">
                             <input type="checkbox" name="privacidad" id="privacidad" class="form-check-input" value="1"

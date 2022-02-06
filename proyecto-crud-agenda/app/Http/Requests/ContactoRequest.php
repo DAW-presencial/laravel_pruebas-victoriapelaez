@@ -27,14 +27,15 @@ class ContactoRequest extends FormRequest
             'nombre' => 'required|string',
             'apellido' => 'required|string',
             'telefono' => 'required|size:9',
-            'email' => 'required|email'];
+            'email' => 'required|email',
+            'foto' => 'max:10000|mimes:jpeg,png,jpg'];
     }
 
-   /* public function messages()
-    {
-        return [
-            'required' => 'El :attribute es requerido',
-            'email' => 'El email debe tener un formato xxxx@dominio.xxx'
-        ];
-    }*/
+    /* public function messages()
+     {
+         return [
+             'required' => 'El :attribute es requerido',
+             'email' => 'El email debe tener un formato xxxx@dominio.xxx'
+         ];
+     }*/
 }
