@@ -132,12 +132,6 @@ class ContactoController extends Controller
     {
         $this->authorize('update', $user);
 
-        if ($request->hasFile('foto')) {
-            $contacto = Contacto::findOrFail($id);
-            Storage::delete('public/' . $contacto->foto);
-            $contacto['foto'] = $request->file('foto')->store('uploads', 'public');
-            Contacto::where('id', '=', $id)->update($request->except(['_token', '_method']));
-        }
         Contacto::where('id', '=', $id)->update($request->except(['_token', '_method']));
 
         return redirect('contactos')->with('mensaje', __("message.actualizado"));
@@ -157,10 +151,10 @@ class ContactoController extends Controller
         /*$this->authorize('delete',$user);*/
 
         $contacto = Contacto::findOrFail($id);
-        if (Storage::delete('storage/' . $contacto->foto)) {
+        if (Storage::delete('public/' . $contacto->foto)) {
             Contacto::destroy($id);
         }
-        Contacto::destroy($id);
+
 
         return redirect('contactos')->with('mensaje', __("message.borrado"));
     }

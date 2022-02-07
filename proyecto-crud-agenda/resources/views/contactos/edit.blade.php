@@ -94,10 +94,12 @@
                     <div class="form-check">
                         <label for="idioma" for="idioma">
                             <input class="form-check-input" type="radio"
-                                   name="idioma" value="espanol" {{ ($datos->idioma=="espanol")? "checked" : "" }} /> @lang('Español')
+                                   name="idioma"
+                                   value="espanol" {{ ($datos->idioma=="espanol")? "checked" : "" }} /> @lang('Español')
                             <br>
                             <input class="form-check-input" type="radio"
-                                   name="idioma" value="ingles" {{ ($datos->idioma=="ingles")? "checked" : "" }}/> @lang("Inglés")
+                                   name="idioma"
+                                   value="ingles" {{ ($datos->idioma=="ingles")? "checked" : "" }}/> @lang("Inglés")
                         </label>
 
                     </div>
@@ -105,7 +107,8 @@
 
                     <div class="form-group">
                         <i class="fa fa-pencil-square-o bigicon"></i>
-                        <label for="descripcion" class="col-form-label">@lang('Escribe una breve descripción de ti'):</label><br>
+                        <label for="descripcion" class="col-form-label">@lang('Escribe una breve descripción de ti')
+                            :</label><br>
                         <textarea id="descripcion" name="descripcion" class="form-control" rows="4" cols="50">{{ isset($datos->descripcion)?$datos->descripcion:old('descripcion') }}
         </textarea><br>
                     </div>
@@ -115,21 +118,26 @@
                         <label for="color" class="col col-form-label">@lang('Elije un color favorito'):</label><br>
                         <div class="form-check">
                             <select name="color" id="color" class="form-check-input">
-                                <option value="rojo" @if(isset($datos->color)) @if($datos->color=="rojo") selected @endif @endif>@lang('Rojo')</option>
-                                <option value="azul" @if(isset($datos->color)) @if($datos->color=="azul") selected @endif @endif>@lang('Azul')</option>
-                                <option value="verde" @if(isset($datos->color)) @if($datos->color=="verde") selected @endif @endif>@lang('Verde')</option>
-                                <option value="amarillo" @if(isset($datos->color)) @if($datos->color=="amarillo") selected @endif @endif>@lang('Amarillo')</option>
+                                <option value="rojo"
+                                        @if(isset($datos->color)) @if($datos->color=="rojo") selected @endif @endif>@lang('Rojo')</option>
+                                <option value="azul"
+                                        @if(isset($datos->color)) @if($datos->color=="azul") selected @endif @endif>@lang('Azul')</option>
+                                <option value="verde"
+                                        @if(isset($datos->color)) @if($datos->color=="verde") selected @endif @endif>@lang('Verde')</option>
+                                <option value="amarillo"
+                                        @if(isset($datos->color)) @if($datos->color=="amarillo") selected @endif @endif>@lang('Amarillo')</option>
                             </select><br>
                         </div>
                     </div>
                     <br><br>
 
-                    <div class="mb-3">
+                    {{--no editamos la foto--}}
+                    {{--<div class="mb-3">
                         <i class="fa fa-pencil-square-o bigicon"></i>
                         <label for="formFile" class="form-label">Añadir foto</label>
                         <img src="{{ asset('storage').'/'.$datos->foto }}" alt="Imagen Contacto" class="img-fluid img-thumbnail" width="50">
                         <input class="form-control border-0" type="file" id="formFile" name="foto" value="">
-                    </div><br>
+                    </div><br>--}}
 
                     <div class="form-check">
                         <label for="privacidad" class="col col-form-label">
