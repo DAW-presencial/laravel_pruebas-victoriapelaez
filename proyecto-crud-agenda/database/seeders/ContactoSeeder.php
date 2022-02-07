@@ -16,7 +16,7 @@ class ContactoSeeder extends Seeder
      */
     public function run()
     {
-        Contacto::factory(10)->create();
+
         $contactos = [
             [
                 'nombre' => 'Victoria',
@@ -27,7 +27,7 @@ class ContactoSeeder extends Seeder
                 'nacimiento'=>'1988/01/13',
                 'idioma'=>'espanol',
                 'color'=>'rojo',
-                'user_id'=>'1'
+                'user_id'=>'2'
 
             ], [
                 'nombre' => 'Patricia',
@@ -38,7 +38,7 @@ class ContactoSeeder extends Seeder
                 'nacimiento'=>'1981/08/10',
                 'idioma'=>'espanol',
                 'color'=>'amarillo',
-                'user_id'=>'1'
+                'user_id'=>'2'
             ], [
                 'nombre' => 'Ramón',
                 'apellido' => 'Peláez',
@@ -70,10 +70,11 @@ class ContactoSeeder extends Seeder
                 'nacimiento'=>'1959/09/23',
                 'idioma'=>'espanol',
                 'color'=>'rojo',
-                'user_id'=>'1'
+                'user_id'=>'2'
             ],
         ];
         DB::table('contactos')->insert($contactos);
+        Contacto::factory(5)->create();
 
     }
 }

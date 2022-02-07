@@ -17,16 +17,17 @@ class ContactoFactory extends Factory
     public function definition()
     {
         return [
-            'nombre' => $this->faker->text(20),
-            'apellido' => $this->faker->text(20),
-            'telefono' => $this->faker->text(9),
+//            'foto'=>$this->faker->image('storage', 50, 50, 'cats', true, true),
+            'nombre' => $this->faker->firstName,
+            'apellido' => $this->faker->lastName,
+            'telefono' => '000000000',
             'email' => $this->faker->safeEmail,
             'edad'=> $this->faker->numberBetween(15, 80),
             'nacimiento'=> $this->faker->date,
             'idioma'=> 'espanol',
-            'descripcion'=> $this->faker->boolean,
-            'color'=> 'red',
-            'user_id'=> $this->faker->numberBetween(1,3)
+            'descripcion'=> $this->faker->text(20),
+            'color'=>'rojo',
+            'user_id'=> $this->faker->numberBetween(2,3)
         ];
     }
 
