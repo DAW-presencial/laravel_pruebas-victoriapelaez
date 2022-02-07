@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Contacto;
+use Database\Factories\ContactoFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,6 +16,7 @@ class ContactoSeeder extends Seeder
      */
     public function run()
     {
+        Contacto::factory(10)->create();
         $contactos = [
             [
                 'nombre' => 'Victoria',
@@ -45,7 +48,7 @@ class ContactoSeeder extends Seeder
                 'nacimiento'=>'1955/10/13',
                 'idioma'=>'espanol',
                 'color'=>'azul',
-                'user_id'=>'2'
+                'user_id'=>'3'
             ],
             [
                 'nombre' => 'Joan',
@@ -56,7 +59,7 @@ class ContactoSeeder extends Seeder
                 'nacimiento'=>'1988/11/13',
                 'idioma'=>'espanol',
                 'color'=>'verde',
-                'user_id'=>'2'
+                'user_id'=>'3'
             ],
             [
                 'nombre' => 'Carmen',
@@ -71,5 +74,6 @@ class ContactoSeeder extends Seeder
             ],
         ];
         DB::table('contactos')->insert($contactos);
+
     }
 }
