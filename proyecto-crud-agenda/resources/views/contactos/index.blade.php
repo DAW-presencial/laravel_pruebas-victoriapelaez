@@ -37,15 +37,15 @@
                         <th scope="col" class="text-center" disabled>@lang('Acciones')</th>
                     @endif
                     <th scope="col" class="text-center">@lang('Id')</th>
-                    <th scope="col" class="text-center">@lang('Foto')</th>
+{{--                    <th scope="col" class="text-center">@lang('Foto')</th>--}}
                     <th scope="col" class="text-center">@lang('Nombre')</th>
                     <th scope="col" class="text-center">@lang('Apellido')</th>
                     <th scope="col" class="text-center">@lang('Teléfono')</th>
                     <th scope="col" class="text-center">@lang('Email')</th>
                     <th scope="col" class="text-center">@lang('Edad')</th>
                     <th scope="col" class="text-center">@lang('Cumpleaños')</th>
-                    <th scope="col" class="text-center">@lang('Idioma')</th>
-                    <th scope="col" class="text-center">@lang('Color')</th>
+                    {{--<th scope="col" class="text-center">@lang('Idioma')</th>
+                    <th scope="col" class="text-center">@lang('Color')</th>--}}
                 </tr>
                 </thead>
                 <tbody>
@@ -96,18 +96,18 @@
                             </div>
                         </td>
                         <td>{{$dato->id}}</td>
-                        <td>
+                        {{--<td>
                             @if($dato->foto)
                                 <img src="{{ asset('storage').'/'.$dato->foto }}" alt="Imagen Contacto" class="img-fluid img-thumbnail" width="50">
-                            @endif</td>
+                            @endif</td>--}}
                         <td>{{$dato->nombre}}</td>
                         <td>{{$dato->apellido}}</td>
                         <td>{{$dato->telefono}}</td>
                         <td>{{$dato->email}}</td>
                         <td>{{$dato->edad}}</td>
                         <td>{{$dato->nacimiento}}</td>
-                        <td>{{$dato->idioma}}</td>
-                        <td>{{$dato->color}}</td>
+                        {{--<td>{{$dato->idioma}}</td>
+                        <td>{{$dato->color}}</td>--}}
                     </tr>
                 @endforeach
                 </tbody>

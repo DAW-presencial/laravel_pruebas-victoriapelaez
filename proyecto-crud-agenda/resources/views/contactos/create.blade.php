@@ -131,7 +131,7 @@
 
                     <div class="mb-3">
                         <i class="fa fa-pencil-square-o bigicon"></i>
-                        <label for="formFile" class="form-label">Añadir foto</label>
+                        <label for="formFile" class="form-label">@lang('Añadir foto')</label>
                         <input class="form-control border-0" type="file" id="formFile" name="foto">
                     </div><br>
 
