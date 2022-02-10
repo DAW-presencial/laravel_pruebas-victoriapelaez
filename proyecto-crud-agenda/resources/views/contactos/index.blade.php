@@ -1,5 +1,5 @@
 @include('layouts.head')
-@include('layouts.navigation')
+{{--@include('layouts.navigation')--}}
 
 @if(Session::has('mensaje'))
     <div class="msg-contacto alert alert-danger">

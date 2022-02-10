@@ -1,5 +1,5 @@
 @include('layouts.head')
-@include('layouts.navigation')
+{{--@include('layouts.navigation')--}}
 <div class="container">
     <h1 class="header m-5 text-uppercase text-center">@lang($contacto->nombre . " " . $contacto->apellido)</h1>
     <p class="text-uppercase text-success font-weight-bold text-center">@lang('Foto')</p>

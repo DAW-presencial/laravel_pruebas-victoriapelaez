@@ -45,8 +45,10 @@
     </style>
 </head>
 <header>
-
+@extends('layouts.navigation')
 </header>
+{{--Podria añadir aqui el div container y quitarlo de todo y en lsa vistas poner section--}}
 @yield('content')
+
 </body>
 </html>

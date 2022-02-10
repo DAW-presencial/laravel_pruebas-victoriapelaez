@@ -1,5 +1,5 @@
 @include('layouts.head')
-@include('layouts.navigation')
+{{--@include('layouts.navigation')--}}
 
 <div class="container">
     <div class="header text-uppercase p-5">
