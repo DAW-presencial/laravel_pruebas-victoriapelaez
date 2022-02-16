@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ApiController extends Controller
 {
@@ -15,7 +16,10 @@ class ApiController extends Controller
     public function index()
     {
 //        return view('vista');
-        return "Ejecutando api";
+       // return "Ejecutando api";
+        $datos = DB::table('contactos')->select('nombre', 'apellido', 'telefono', 'email', 'edad')
+            ->get();
+        return $datos;
     }
 
     /**
