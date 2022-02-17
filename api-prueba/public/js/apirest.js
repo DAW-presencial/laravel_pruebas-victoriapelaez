@@ -19,7 +19,7 @@ function api_js_index() {
     const xhttp = new XMLHttpRequest();//se instancia solo con ajax
     xhttp.onload = function () {
         document.getElementById('resultado').innerHTML = generarTabla(JSON.parse(xhttp.responseText));
-            //generarTabla(JSON.parse(xhttp.responseText))
+        //generarTabla(JSON.parse(xhttp.responseText))
         //si es json hay q parsear responseText --> JSON.parse(responsetext)
     };
     xhttp.open('GET', '/api/apirest', true);//metodo, ruta servidor, es predeterminado el true
