@@ -1,15 +1,15 @@
 function generarTabla(response) {
-//    const datos = response;
-//    const datos = JSON.parse(response);
-    datos = '<div class="content"><table class="table table-head-fixed text-nowrap table-striped table-bordered">'
-        + '<thead><tr><th>Nombre</th><th>Apellido</th><th>Teléfono</th><th>Email</th><th>Edad</th></tr></thead><tbody>';
+console.log(response)
+    datos = `<div class="content"><table>
+        <thead><tr><th>Nombre</th><th>Apellido</th><th>Teléfono</th><th>Email</th><th>Edad</th></tr></thead><tbody>`
     for (let contacto of response) {
-        datos += '<tr><td>'
-            + contacto.nombre + '</td><td>'
-            + contacto.apellido + '</td><td>'
-            + contacto.telefono + '</td><td class="text-right">'
-            + contacto.email + '</td><td class="text-right">'
-            + contacto.edad + '</td></tr>';
+        datos += `<tr><td>
+             ${contacto.nombre}  </td><td>
+             ${contacto.apellido}  </td><td>
+             ${contacto.telefono}  </td><td class="text-right">
+             ${contacto.email}  </td><td class="text-right">
+             ${contacto.edad}  </td><td>
+        <button onclick="api_js_delete(${contacto.id})">Eliminar</button></td></tr>`;
     }
     return datos + '</tbody></table></div>';
 }
@@ -24,4 +24,15 @@ function api_js_index() {
     };
     xhttp.open('GET', '/api/apirest', true);//metodo, ruta servidor, es predeterminado el true
     xhttp.send();//dentro del parentesis puede ir el body
+}
+
+function api_js_delete(id) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        document.getElementById('resultado').innerHTML = "<p>Contacto borrado</p>";
+    };
+    xhttp.open('DELETE', '/api/apirest/'+ id, true);
+    xhttp.setRequestHeader('Content-Type', 'application/vnd.api+json');
+    xhttp.setRequestHeader('Accept', 'application/vnd.api+json');
+    xhttp.send();
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Apiprueba;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,8 +17,8 @@ class ApiController extends Controller
     public function index()
     {
 //        return view('vista');
-       // return "Ejecutando api";
-        $datos = DB::table('contactos')->select('nombre', 'apellido', 'telefono', 'email', 'edad')
+        // return "Ejecutando api";
+        $datos = DB::table('contactos')
             ->get();
         return $datos;
     }
@@ -25,7 +26,7 @@ class ApiController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -36,7 +37,7 @@ class ApiController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -47,8 +48,8 @@ class ApiController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -59,11 +60,27 @@ class ApiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        /*$datos = DB::table('contactos')->select(
+            'foto',
+            'nombre',
+            'apellido',
+            'telefono',
+            'email',
+            'edad',
+            'nacimiento',
+            'idioma',
+            'descripcion',
+            'color',
+            'privacidad',
+            'user_id')
+            ->where('id', $id)
+            ->get();*/
+        Apiprueba::destroy($id);
+//        return $datos;
     }
 }

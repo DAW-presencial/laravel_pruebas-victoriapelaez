@@ -7,10 +7,12 @@
     <title>Api-prueba</title>
 </head>
 <body>
+<h2>TABLA RESULTADOS</h2>
+<div id="resultado">
+</div>
 <div>
-    <button onclick="api_js_index()">Activar Funcion</button>
-    <div id="resultado">
-    </div>
+    <button onclick="api_js_index()">Sacar datos</button>
+
 </div>
 
 
