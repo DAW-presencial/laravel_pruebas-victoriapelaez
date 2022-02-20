@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\api\ApiController;
 use App\Http\Requests\ContactoRequest;
 use App\Models\Contacto;
 use App\Models\User;
@@ -20,14 +21,17 @@ class ContactoController extends Controller
      */
     public function index()
     {
-        $this->authorize('index-contacto');
+        $contactos = new ApiController();
+        $datos = $contactos->index();
+        return view('contactos.index', compact('datos'));
+        /*$this->authorize('index-contacto');
         $datos = DB::table('contactos')
             ->where('deleted_at', null)
             ->where('user_id', Auth::id())
             ->orderBy('id', 'asc')
             ->get();
 
-        return view('contactos.index', compact('datos'));
+        return view('contactos.index', compact('datos'));*/
     }
 
     /**
@@ -51,6 +55,38 @@ class ContactoController extends Controller
     {
         $this->authorize('create', new User());
 
+        //Raw
+        /*$nombre = $request->nombre;
+        $apellido = $request->apellido;
+        $telefono = $request->telefono;
+        $email = $request->email;
+        $edad = $request->edad;
+        $nacimiento = $request->nacimiento;
+        $idioma = $request->idioma;
+        $descripcion = $request->descripcion;
+        $color = $request->color;
+        $privacidad = $request->privacidad;
+        $user_id = $request->user()->id;
+
+        DB::insert('insert into contactos (nombre, apellido, telefono, email, edad, nacimiento, idioma, descripcion,color,privacidad, user_id)
+        values ($nombre, $apellido, $telefono, $email, $edad, $nacimiento, $idioma, $descripcion,$color,$privacidad, $user_id)');
+        */
+
+        //Query Builder
+        /*DB::table('contactos')->insert([
+            'nombre' => $request->nombre,
+            'apellido' => $request->apellido,
+            'telefono' => $request->telefono,
+            'email' => $request->email,
+            'edad' => $request->edad,
+            'nacimiento' => $request->nacimiento,
+            'idioma' => $request->idioma,
+            'descripcion' => $request->descripcion,
+            'color' => $request->color,
+            'privacidad' => $request->privacidad,
+            'user_id' => $request->user()->id
+        ]);*/
+
         //Eloquent
         $contacto = Contacto::create($request->all());
         if ($request->hasFile('foto')) {
@@ -70,6 +106,7 @@ class ContactoController extends Controller
      */
     public function show(Contacto $contacto)
     {
+
         return view('contactos.show', compact('contacto'));
     }
 
@@ -85,6 +122,7 @@ class ContactoController extends Controller
         $datos = Contacto::findOrFail($id);
         return view('contactos.edit', compact('datos'));
 
+        /*return view('contactos.edit', compact('contacto'));*///Poner Contacto$contacto como parámetro y cambiar $datos en index
     }
 
     /**
@@ -114,6 +152,7 @@ class ContactoController extends Controller
         if (!Gate::allows('delete-contacto')) {
             Abort(403);
         }
+        /*$this->authorize('delete',$user);*/
 
         $contacto = Contacto::findOrFail($id);
         if (Storage::delete('public/' . $contacto->foto)) {

@@ -1,24 +1,26 @@
 <?php
 
+use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+Route::get('/', function () {
+    return view('home');
+})->name('home');
+
+
+require __DIR__ . '/auth.php';
+
+Route::resource('/contactos', ContactoController::class)
+    ->middleware(['auth'])
+    ->parameter('contactos', 'contacto');
+
+Route::get('/set_language/{lang}', [Controller::class, 'set_language'])->name('set_language');
+
+Route::fallback(function () {
+    return view('home');
+});
