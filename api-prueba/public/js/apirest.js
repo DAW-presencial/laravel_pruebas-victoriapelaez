@@ -92,9 +92,9 @@ function generarTabla(response) {
 }
 
 function verInfoExtra(data) {
-    datos = `El contacto ${data.nombre}
+    datos = `${data.nombre}
              ${data.apellido} tiene
-             ${data.edad} años y su color favorito es el  ${data.color}.`;
+             ${data.edad} años.`;
     return datos;
 }
 
