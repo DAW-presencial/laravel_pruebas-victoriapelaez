@@ -60,10 +60,10 @@ function api_js_delete(id) {
 
 
 function api_js_create() {
-    let nombre = document.querySelector(".nombre").value;
-    let apellido = document.querySelector(".apellido").value;
-    let telefono = document.querySelector(".telefono").value;
-    let email = document.querySelector(".email").value;
+    let nombre = document.querySelector("#name").value;
+    let apellido = document.querySelector("#apellido").value;
+    let telefono = document.querySelector("#telefono").value;
+    let email = document.querySelector("#email").value;
 
     fetch('/api/apirest', {
         method: 'POST',
@@ -73,6 +73,9 @@ function api_js_create() {
         },
         body: JSON.stringify({nombre: nombre, apellido: apellido, telefono: telefono, email: email})
     })
+        .then(document.getElementById('resultado').innerHTML = "<p>Contacto creado</p>");
+    setTimeout(location.reload(), 3000);
+
 }
 
 

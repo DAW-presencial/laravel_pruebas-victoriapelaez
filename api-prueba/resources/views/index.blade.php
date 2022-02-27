@@ -14,11 +14,11 @@
     <h3 class="text-primary border-bottom border-primary">AGENDA DE CONTACTOS</h3>
     <div class="container mw-100">
         <div class="row">
-            <form class="col-xl-4 col-md-12 p-5">
-                <div class="mb-3">
+            <div class="col-xl-4 col-md-12 p-5">
+                {{--<div class="mb-3">
                     <label for="id" class="form-label">Id</label>
                     <input type="text" class="form-control" id="id">
-                </div>
+                </div>--}}
                 <div class="mb-3">
                     <label for="name" class="form-label">Nombre</label>
                     <input type="text" class="form-control" id="name">
@@ -36,9 +36,9 @@
                     <input type="text" class="form-control" id="telefono">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Crear contacto +</button>
+                <button type="submit" onclick="api_js_create()" class="btn btn-primary">Crear contacto +</button>
                 <button  onclick="api_js_index()" class="btn btn-outline-info">Ver Todos</button>
-            </form>
+            </div>
 
         <div id="resultado" class="col-xl-8 col-md-12 p-5">
         </div>
