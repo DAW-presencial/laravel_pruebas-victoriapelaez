@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Apiprueba;
+use App\Models\Contacto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -62,6 +62,6 @@ class ApiController extends Controller
      */
     public function destroy($id)
     {
-        Apiprueba::destroy($id);
+        Contacto::destroy($id);
     }
 }
