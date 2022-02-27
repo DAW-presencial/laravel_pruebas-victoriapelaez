@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Apiprueba;
+use App\Http\Resources\ContactoResource;
+use App\Models\Contacto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,11 +17,9 @@ class ApiController extends Controller
      */
     public function index()
     {
-//        return view('vista');
-        // return "Ejecutando api";
-        $datos = DB::table('contactos')
-            ->get();
+        $datos = DB::table('contactos')->get();
         return $datos;
+//        return Contacto::all();
     }
 
     /**
@@ -31,7 +30,17 @@ class ApiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        return Contacto::create($request->all());
+        $contacto = Contacto::create([
+            'nombre' => $request->nombre,
+            'apellido' => $request->apellido,
+            'telefono' => $request->telefono,
+            'email' => $request->email,
+        ]);
+        return response()->json(['Contacto creado.', new ContactoResource($contacto)]);
+
+
+
     }
 
     /**
@@ -42,7 +51,8 @@ class ApiController extends Controller
      */
     public function show($id)
     {
-        //
+//        Contacto::find($id);
+        return response()->json(['data' => Contacto::find($id)]);
     }
 
     /**
@@ -54,7 +64,16 @@ class ApiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $contacto = Contacto::find($id);
+        $contacto->update($request->all());
+      /*  $contacto->nombre = $request->nombre;
+        $contacto->apellido = $request->apellido;
+        $contacto->telefono = $request->telefono;
+        $contacto->email = $request->email;*/
+        $contacto->save();
+        return $contacto;
+
+//       return response()->json(['Contacto actualizado.']);
     }
 
     /**
@@ -65,22 +84,6 @@ class ApiController extends Controller
      */
     public function destroy($id)
     {
-        /*$datos = DB::table('contactos')->select(
-            'foto',
-            'nombre',
-            'apellido',
-            'telefono',
-            'email',
-            'edad',
-            'nacimiento',
-            'idioma',
-            'descripcion',
-            'color',
-            'privacidad',
-            'user_id')
-            ->where('id', $id)
-            ->get();*/
-        Apiprueba::destroy($id);
-//        return $datos;
+        Contacto::destroy($id);
     }
 }
