@@ -45,6 +45,7 @@
         </div>
     </div>
 
+    <h3 class="text-primary border-bottom border-primary">Información extra del contacto elegido</h3>
     <div class="contacto">
 
     </div>

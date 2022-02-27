@@ -24,16 +24,11 @@ function generarTabla(response) {
     return datos + '</tbody></table></div>';
 }
 
-function verContacto(response) {
-    datos = `<div class="content"><table>
-        <thead><tr><th>Nombre</th><th>Apellido</th><th>Teléfono</th><th>Email</th><th>Edad</th></tr></thead><tbody>`
-        `<tr><td>
-             ${response.nombre}  </td><td>
-             ${response.apellido}  </td><td>
-             ${response.telefono}  </td><td class="text-right">
-             ${response.email}  </td><td class="text-right">
-             ${response.edad}  </td></tr>
-    </tbody></table></div>`;
+function verInfoExtra(data) {
+    console.log(data)
+    datos = `El contacto ${data.nombre}
+             ${data.apellido} tiene
+             ${data.edad} años y su color favoritos es el  ${data.color}.`;
     return datos;
 }
 
@@ -58,7 +53,6 @@ function api_js_delete(id) {
     xhttp.send();
 }
 
-
 function api_js_create() {
     let nombre = document.querySelector("#name").value;
     let apellido = document.querySelector("#apellido").value;
@@ -78,19 +72,16 @@ function api_js_create() {
 
 }
 
-
 /*function api_js_update(data) {
 
     })
 }*/
 
 function api_js_show(id) {
-    const xhttp = new XMLHttpRequest();
-    xhttp.onload = function () {
-        document.querySelector(".contacto").innerHTML = verContacto(JSON.parse(xhttp.responseText));
-    };
-    xhttp.open('GET', '/api/apirest/' + id, true);
-    xhttp.setRequestHeader('Content-Type', 'application/vnd.api+json');
-    xhttp.setRequestHeader('Accept', 'application/vnd.api+json');
-    xhttp.send();
+    fetch('/api/apirest/' + id)
+        .then(response => response.json())
+        .then(data => {
+            document.querySelector(".contacto").innerHTML = verInfoExtra(data.data);
+        })
+
 }
