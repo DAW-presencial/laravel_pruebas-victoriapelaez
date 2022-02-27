@@ -13,35 +13,14 @@
 <div class="m-5">
     <h3 class="text-primary border-bottom border-primary">AGENDA DE CONTACTOS</h3>
     <div class="container mw-100">
+        <button  onclick="api_js_index()" class="btn btn-outline-info">Ver Todos</button>
+        <button  onclick="renderFormularioCrear()" class="btn btn-primary">Crear Contacto</button>
         <div class="row">
-            <div class="col-xl-4 col-md-12 p-5">
-                {{--<div class="mb-3">
-                    <label for="id" class="form-label">Id</label>
-                    <input type="text" class="form-control" id="id">
-                </div>--}}
-                <div class="mb-3">
-                    <label for="name" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="name">
-                </div>
-                <div class="mb-3">
-                    <label for="apellido" class="form-label">Apellido</label>
-                    <input type="text" class="form-control" id="apellido">
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email">
-                </div>
-                <div class="mb-3">
-                    <label for="telefono" class="form-label">Telefono</label>
-                    <input type="text" class="form-control" id="telefono">
-                </div>
-
-                <button type="submit" onclick="api_js_create()" class="btn btn-primary">Crear contacto +</button>
-                <button  onclick="api_js_index()" class="btn btn-outline-info">Ver Todos</button>
+            <div id="resultado" class="col-xl-8 col-md-12 p-5">
+            </div>
+            <div id="formulario" class="col-xl-4 col-md-12 p-5">
             </div>
 
-        <div id="resultado" class="col-xl-8 col-md-12 p-5">
-        </div>
         </div>
     </div>
 
