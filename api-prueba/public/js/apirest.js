@@ -24,6 +24,7 @@ function api_js_create() {
     let apellido = document.querySelector("#apellido").value;
     let telefono = document.querySelector("#telefono").value;
     let email = document.querySelector("#email").value;
+    let edad = document.querySelector("#edad").value;
 
     fetch('/api/apirest', {
         method: 'POST',
@@ -31,7 +32,7 @@ function api_js_create() {
             "Content-Type": "application/json",
             "Accept": "application/json"
         },
-        body: JSON.stringify({nombre: nombre, apellido: apellido, telefono: telefono, email: email})
+        body: JSON.stringify({nombre: nombre, apellido: apellido, telefono: telefono, email: email, edad: edad})
     })
         .then(document.getElementById('resultado').innerHTML = "<p class='text-danger m-5 text-center'>Contacto creado</p>");
     setTimeout(location.reload(), 3000);
@@ -43,12 +44,13 @@ function api_js_update(id) {
     let apellido = document.querySelector("#apellido").value;
     let telefono = document.querySelector("#telefono").value;
     let email = document.querySelector("#email").value;
+    let edad = document.querySelector("#edad").value;
     fetch('/api/apirest/' + id, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({nombre: nombre, apellido: apellido, telefono: telefono, email: email})
+        body: JSON.stringify({nombre: nombre, apellido: apellido, telefono: telefono, email: email, edad: edad})
     })
         .then(document.getElementById('resultado').innerHTML = "<p class='text-danger m-5 text-center'>Contacto Actualizado</p>");
     setTimeout(location.reload(), 3000);
@@ -113,6 +115,10 @@ function renderFormularioCrear() {
                     <label for="telefono" class="form-label">Telefono</label>
                     <input type="text" class="form-control" id="telefono">
                 </div>
+                <div class="mb-3">
+                    <label for="edad" class="form-label">Edad</label>
+                    <input type="number" class="form-control" id="edad">
+                </div>
                 <button type="submit" onclick="api_js_create()" class="btn btn-primary"> Crear </button>`;
 }
 
@@ -133,6 +139,10 @@ function renderFormularioActualizar(id) {
                 <div class="mb-3">
                     <label for="telefono" class="form-label">Telefono</label>
                     <input type="text" class="form-control" id="telefono" value="">
+                </div>
+                <div class="mb-3">
+                    <label for="edad" class="form-label">Edad</label>
+                    <input type="number" class="form-control" id="edad">
                 </div>
                 <button type="submit" onclick="api_js_update(${id})" class="btn btn-outline-warning"> Actualizar </button>`;
 }

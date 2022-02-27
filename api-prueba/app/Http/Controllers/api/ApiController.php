@@ -36,6 +36,7 @@ class ApiController extends Controller
             'apellido' => $request->apellido,
             'telefono' => $request->telefono,
             'email' => $request->email,
+            'edad' => $request->edad,
         ]);
         return response()->json(['Contacto creado.', new ContactoResource($contacto)]);
 
