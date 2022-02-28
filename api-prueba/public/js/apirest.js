@@ -1,9 +1,11 @@
+const URL = '/api/apirest/';
+
 function api_js_index() {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
         document.getElementById('resultado').innerHTML = generarTabla(JSON.parse(xhttp.responseText));
     };
-    xhttp.open('GET', '/api/apirest', true);
+    xhttp.open('GET', URL, true);
     xhttp.send();//dentro del parentesis puede ir el body
 }
 
@@ -13,7 +15,7 @@ function api_js_delete(id) {
         document.getElementById('resultado').innerHTML = "<p class='text-danger m-5 text-center'>Contacto borrado</p>" +
             "<p class='text-danger m-5 text-center'>Haga click en el botón ver todos</p>";
     };
-    xhttp.open('DELETE', '/api/apirest/' + id, true);
+    xhttp.open('DELETE', URL + id, true);
     xhttp.setRequestHeader('Content-Type', 'application/vnd.api+json');
     xhttp.setRequestHeader('Accept', 'application/vnd.api+json');
     xhttp.send();
@@ -26,7 +28,7 @@ function api_js_create() {
     let email = document.querySelector("#email").value;
     let edad = document.querySelector("#edad").value;
 
-    fetch('/api/apirest', {
+    fetch(URL, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
@@ -36,7 +38,6 @@ function api_js_create() {
     })
         .then(document.getElementById('resultado').innerHTML = "<p class='text-danger m-5 text-center'>Contacto creado</p>");
     setTimeout(location.reload(), 3000);
-
 }
 
 function api_js_update(id) {
@@ -45,7 +46,7 @@ function api_js_update(id) {
     let telefono = document.querySelector("#telefono").value;
     let email = document.querySelector("#email").value;
     let edad = document.querySelector("#edad").value;
-    fetch('/api/apirest/' + id, {
+    fetch(URL + id, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
@@ -57,12 +58,11 @@ function api_js_update(id) {
 }
 
 function api_js_show(id) {
-    fetch('/api/apirest/' + id)
+    fetch(URL + id)
         .then(response => response.json())
         .then(data => {
             document.querySelector(".contacto").innerHTML = verInfoExtra(data.data);
         })
-
 }
 
 function generarTabla(response) {
